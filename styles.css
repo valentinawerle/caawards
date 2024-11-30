@@ -7,12 +7,16 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color: white;
-    background-image: url("https://cloudfront-us-east-1.images.arcpublishing.com/infobae/DK6ASKZZOFELZLLQJJ63ZFZXDM.jpg") ;
-    height: 100vh;
-    overflow-y: hidden;
-
+    min-height: 100vh;
 }
 
+main {
+    background-image: url("https://cloudfront-us-east-1.images.arcpublishing.com/infobae/DK6ASKZZOFELZLLQJJ63ZFZXDM.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #111;
+    background-blend-mode: difference;
+}
 
 .navbar {
     position: fixed;
@@ -23,7 +27,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(10px);
     z-index: 1000;
 }
@@ -62,17 +66,13 @@ body {
 }
 
 .hero-content {
-    margin-top: 50px;
-    max-width: 800px;
+    max-width: max-content;
     padding: 2rem;
-    display: flex; 
-    flex-direction: column;
-     justify-content: space-between;
-     align-items: center;
+    margin-bottom: 7vh;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: clamp(40px, 7vw, 75px);
     font-weight: 800;
     margin-bottom: 1rem;
     letter-spacing: 2px;
@@ -82,11 +82,12 @@ body {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    
 }
 
 .hero-content img{
-    width:17rem;
-    height: auto;
+    max-width: 100%;
+    height: 40vh;
 }
 
 .argentina {
@@ -110,14 +111,20 @@ body {
 }
 
 .sponsors {
-    padding: 3rem 2rem;
+    padding: 2rem;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 990px;
+    border-top: 1px solid #ffffff40;
+    max-width: 90%;
 }
 
 .sponsors h2 {
-    padding-bottom: 10px;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .sponsor-logos {
@@ -141,13 +148,31 @@ body {
     .nav-links {
         display: none;
     }
-
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 6vh;
+    }
+    
+    .hero-content {
+        margin-bottom: 0;
+    }
     .hero-content h1 {
-        font-size: 2.5rem;
+        text-wrap: wrap;
     }
-
-    .sponsor-logos {
-        flex-direction: column;
-        gap: 2rem;
+    .sponsors {
+        position: relative;
+        padding: 2rem 0;
+        max-width: 100%;
     }
+    .sponsors:before {
+        content: '';
+        display: block;
+        background-color: #000000ab;
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        mix-blend-mode: overlay; 
+    }
+  
 }

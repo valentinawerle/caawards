@@ -7,9 +7,11 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color: white;
-    background-image: url("https://cloudfront-us-east-1.images.arcpublishing.com/infobae/DK6ASKZZOFELZLLQJJ63ZFZXDM.jpg") ;
-    height: 100vh;
-    overflow-y: hidden;
+   
+     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://cloudfront-us-east-1.images.arcpublishing.com/infobae/DK6ASKZZOFELZLLQJJ63ZFZXDM.jpg');
+    height: 100dvh;
+    display: grid;
+    grid-template-rows:  1fr auto;
 
 }
 
@@ -50,8 +52,7 @@ body {
 }
 
 .hero {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/placeholder.svg?height=1080&width=1920');
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,7 +111,7 @@ body {
 }
 
 .sponsors {
-    padding: 3rem 2rem;
+    padding: 1rem 2rem;
     text-align: center;
 }
 

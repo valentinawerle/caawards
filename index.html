@@ -1,47 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coscu Army Awards</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="/coscu_army_awards-icon (1).svg" alt="CA Awards Logo" class="logo-img">
+    <link rel="stylesheet" href="./assets/styles/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="assets/img/logos/caa.svg"
+      type="image/x-icon"
+    />
+    <script src="assets/js/app.js" type="module" defer></script>
+  </head>
+  <body class="flex">
+    <section class="body-background">
+      <img src="assets/img/logos/bg-caa.webp" alt="imagen de fondo" />
+    </section>
+    <section class="flex container">
+      <header class="flex">
+        <div class="header-logo">
+          <img
+            src="./assets/img/logos/caa.svg"
+            alt="CA Awards Logo"
+            class="logo-img"
+          />
+        </div>
+        <section class="header-nav">
+          <div class="flex header-nav-container">
+            <nav class="flex navbar nav-main">
+              <a href="#acerca" data-lang="navAbout"></a>
+              <a href="#picantes" data-lang="navHotTopics"></a>
+              <a href="#ternas" data-lang="navCategories"></a>
+              <a href="#sponsors" data-lang="navSponsors"></a>
+            </nav>
+            <div class="nav-button nav-main">
+              <ul class="flex nav-language">
+                <li class="translate">
+                  <img
+                    src="assets/img/icons/translate.svg"
+                    alt="logo translate"
+                  />
+                </li>
+                <li class="country">
+                  <img src="assets/img/flag-countries/arg.svg" alt="bandera" />
+                </li>
+                <li class="arrow">
+                  <button>
+                    <img
+                      src="assets/img/icons/arrow-up.svg"
+                      alt="flecha arriba"
+                    />
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul class="nav-links">
-                <li><a href="#acerca">Acerca de</a></li>
-                <li><a href="#picantes">Picantes</a></li>
-                <li><a href="#ternas">Ternas 2023</a></li>
-                <li><a href="#sponsors">Sponsors 2023</a></li>
-                <li><a href="#" class="language">🇦🇷</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <img src="https://media.discordapp.net/attachments/1298765481691320426/1310732484375478323/image-removebg-preview_1.png?ex=674b9040&is=674a3ec0&hm=0bf077f726391062cdc0b08d8903b3969c2e051b2af05b8f50bc2760eecdbcf7&=&format=webp&quality=lossless" alt="Picantito de oro">
-                <h1>COSCU ARMY AWARDS</h1>
-                <p>Premios a la comunidad de streamers de <span class="argentina">Argentina</span></p>
-                <button class="cta-button">Saber más ▼</button>
-
-                <section class="sponsors">
-                    <h2>Patrocinadores</h2>
-                    <div class="sponsor-logos">
-                        <img src="/placeholder.svg?height=30&width=30" alt="Kick" class="sponsor-logo">
-                        <img src="/placeholder.svg?height=30&width=30" alt="McDonald's" class="sponsor-logo">
-                        <img src="/placeholder.svg?height=30&width=30" alt="Spotify" class="sponsor-logo">
-                    </div>
-                </section>
-            </div>
+          </div>
         </section>
-
-        
-    </main>
-</body>
+        <button class="flex nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </header>
+      <main class="flex">
+        <h1 data-lang="title"></h1>
+        <p data-lang="title-description"></p>
+        <button class="flex">
+          <span data-lang="learn"></span>
+          <span>
+            <img src="assets/img/icons/arrow-down.svg" alt="" />
+          </span>
+        </button>
+      </main>
+      <footer class="flex">
+        <section class="flex sponsors">
+          <h2 data-lang="sponsors"></h2>
+          <hr />
+          <ul class="flex sponsors-logos">
+            <li>
+              <img
+                src="./assets/img/logos/kick.png"
+                alt="Kickstarter Logo"
+                class="footer-sponsor-img"
+              />
+            </li>
+            <li>
+              <img
+                src="./assets/img/logos/mcdonalds.png"
+                alt="McDonald's Logo"
+                class="footer-sponsor-img"
+              />
+            </li>
+            <li>
+              <img
+                src="./assets/img/logos/Spotify_logo_without_text.svg.png"
+                alt="Spotify Logo"
+                class="footer-sponsor-img"
+              />
+            </li>
+          </ul>
+        </section>
+      </footer>
+    </section>
+  </body>
 </html>

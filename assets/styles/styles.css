@@ -1,0 +1,296 @@
+:root {
+  --color-blue: #28a0b7;
+  --color-yellow: #c19914;
+  --color-white: #fff;
+  --title: clamp(2rem, calc(2rem + 3vw), 4rem);
+  --text: clamp(1rem, calc(1rem + 2vw), 1.3rem);
+  --text-small: clamp(0.8rem, calc(0.8rem + 1vw), 1.1rem);
+}
+
+html,
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--color-white);
+}
+
+* {
+  position: relative;
+}
+
+body {
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+
+  & {
+    width: 100%;
+  }
+
+  & .body-background {
+    position: fixed;
+    inset: 0;
+    background-color: #18181890;
+
+    & img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 100%;
+      mix-blend-mode: multiply;
+    }
+  }
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+li {
+  height: 100%;
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  height: 100dvh;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+header {
+  height: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 0;
+  gap: 2rem;
+
+  .header-logo {
+    height: 60px;
+
+    img {
+      object-fit: contain;
+      height: 100%;
+    }
+  }
+
+  .header-nav {
+    width: 100%;
+    flex-grow: 2;
+
+    .header-nav-container {
+      width: 100%;
+      justify-content: space-between;
+      display: none;
+    }
+  }
+}
+
+nav {
+  a {
+    &::after {
+      /* content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 0rem;
+      background-color: var(--color-white);
+      transition: width 0.3s ease;*/
+    }
+
+    &:hover::after {
+      /* transition: all 0.5s;
+      left: 0%;
+
+      height: 0.1rem;
+
+      width: 100%; */
+    }
+  }
+}
+
+.nav-button {
+  height: 2rem;
+
+  button {
+    height: 100%;
+  }
+}
+
+.nav-toggle {
+  background: transparent;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  gap: 0.3rem;
+
+  .bar {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+}
+
+.nav-language {
+  height: 100%;
+  gap: 0.5rem;
+
+  img {
+    height: 100%;
+  }
+}
+
+main {
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+
+  h1 {
+    font-size: var(--title);
+  }
+
+  p {
+    font-size: var(--text);
+  }
+
+  button {
+    background-color: #c19914;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    font-size: var(--text-small);
+    max-height: 2.5rem;
+    align-items: center;
+
+    span {
+      height: 100%;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+
+  b {
+    color: var(--color-blue);
+  }
+}
+
+footer {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  h2 {
+    font-size: var(--text-small);
+    margin: 0;
+  }
+
+  .sponsors {
+    max-width: max-content;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+
+    .sponsors-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      height: 50px;
+
+      li {
+        img {
+          object-fit: contain;
+          width: auto;
+          height: 60%;
+        }
+      }
+    }
+  }
+}
+
+hr {
+  width: clamp(250px, calc(250px + 3vw), 500px);
+}
+
+.header-nav.active {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: #000000;
+  opacity: 0.9;
+  flex-direction: column;
+  text-align: center;
+  font-size: calc(var(--text) + 0.4rem);
+
+  .header-nav-container {
+    display: flex;
+    width: 100%;
+    height: 100dvh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    nav {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .header-nav {
+    display: flex !important;
+
+    justify-content: space-between;
+
+    .header-nav-container {
+      display: flex !important;
+    }
+  }
+
+  .navbar {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 4rem;
+    font-size: clamp(0.8rem, calc(0.8rem + 2vw), 1.1rem);
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-language {
+    display: flex;
+    align-items: center;
+  }
+}

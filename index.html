@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coscu Army Awards</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/i18next/24.0.2/i18next.min.js"></script>
+    <script type="module" src="./language-dropdown.js"></script>
 </head>
 <body>
     <header>
@@ -14,7 +16,7 @@
                     <img src="assets/logocaawards.svg" alt="CA Awards Logo" class="logo-img">
                     <ul class="desktop-menu">
                         <li>
-                            <a href="#acerca" class="link">Acerca de</a>
+                            <a href="#acerca" class="link"  data-id="about"></a>
                         </li>
                         <li>
                             <a href="#picantes" class="link">Picantes</a>
@@ -23,12 +25,11 @@
                             <a href="#ternas" class="link">Ternas 2023</a>
                         </li>
                         <li>
-                            <a href="#sponsors" class="link">Sponsors 2023</a>
+                            <a href="#sponsors" class="link" data-id="sponsors-link"></a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Hamburger (solo mobile) -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -36,11 +37,10 @@
                 </div>
             </div>
 
-            <!-- Menú mobile -->
             <div class="mobile-menu">
                 <ul class="menu-items">
                     <li>
-                        <a href="#acerca" class="link">Acerca de</a>
+                        <a href="#acerca" class="link" data-id="about"></a>
                     </li>
                     <li>
                         <a href="#picantes" class="link">Picantes</a>
@@ -49,33 +49,32 @@
                         <a href="#ternas" class="link">Ternas 2023</a>
                     </li>
                     <li>
-                        <a href="#sponsors" class="link">Sponsors 2023</a>
+                        <a href="#sponsors" class="link" data-id="sponsors-link"></a>
                     </li>
                     <li class="mobile-right-items">
                         <div class="right-item">
                             <img src="assets/translate.svg" class="navbar-translate-svg">
                         </div>
                         <div class="right-item">
-                            <img src="assets/flag-arg.svg" class="flag-arg-svg">
+                            <img src="assets/flag-arg.svg" class="flag-svg">
                         </div>
-                        <div class="right-item">
-                            <img src="assets/arrow-up.svg" class="navbar-arrow-down-svg">
-                        </div>
+                        <language-dropdown>
+                            <img slot="arrow-icon" src="assets/arrow-up.svg" class="navbar-arrow-svg">
+                        </language-dropdown>
                     </li>
                 </ul>
             </div>
 
-            <!-- Right navbar (desktop) -->
             <ul class="right-navbar">
                 <div>
                     <img src="assets/translate.svg" class="navbar-translate-svg">
                 </div>
                 <div>
-                    <img src="assets/flag-arg.svg" class="flag-arg-svg">
+                    <img src="assets/flag-arg.svg" class="flag-svg">
                 </div>
-                <div style="color: blue">
-                    <img src="assets/arrow-up.svg" class="navbar-arrow-down-svg">
-                </div>
+                <language-dropdown>
+                    <img slot="arrow-icon" src="assets/arrow-up.svg" class="navbar-arrow-svg">
+                </language-dropdown>
             </ul>
         </nav>
         <div class="overlay"></div>
@@ -88,11 +87,11 @@
                     <img src="/assets/picantito.png" alt="Picantito de oro" class="picantito">
                 </div>
                 <h1 class="title">COSCU ARMY AWARDS</h1>
-                <p class="description">Premios a la comunidad de streamers de <span class="argentina">Argentina</span></p>
-                <button class="cta-button">Saber más ▼</button>
+                <p class="description" data-id="subtitle"></p>
+                <button class="cta-button" data-id="more-info"></button>
 
                 <section class="sponsors">
-                    <h2>Patrocinadores</h2>
+                    <h2 data-id="sponsors"></h2>
                     <div class="sponsor-logos">
                         <div><img src="/assets/kick.svg" alt="Kick" class="sponsor-logo"></div>
                         <div><img src="/assets/mclogo.svg" alt="McDonald's" class="sponsor-logo"></div>

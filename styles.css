@@ -127,15 +127,6 @@ body {
     gap: 3rem;
 }
 
-.sponsor-logo {
-    height: 30px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.sponsor-logo:hover {
-    opacity: 1;
-}
 
 @media (max-width: 768px) {
     .nav-links {
@@ -150,4 +141,34 @@ body {
         flex-direction: column;
         gap: 2rem;
     }
+}
+
+@keyframes zoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); 
+    }
+}
+
+
+.sponsor-logo {
+    width: 80px; 
+    height: 80px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    animation: zoom 3s infinite ease-in-out;
+}
+
+.sponsor-logo:hover {
+    opacity: 1;
+    animation: bounce 0.6s ease-in-out; 
+    transform: scale(1.2); 
+}
+
+.sponsor-logo.spotify {
+    width: 120px; 
+    height: 120px;
 }

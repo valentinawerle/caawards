@@ -184,6 +184,7 @@ body {
     font-size: 1.2rem;
     color: #cfcece;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .link:hover {

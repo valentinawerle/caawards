@@ -1,0 +1,63 @@
+---
+import Header from '@/components/Header.astro';
+import Sponsors from '@/components/Sponsors.astro';
+
+interface Props {
+	title?: string,
+	bgimage?: string;
+}
+
+const { title, bgimage } = Astro.props;
+
+const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{webTitle}</title>
+	</head>
+	<body>	
+		<div style=`background-image: url(${bgimage});` class="bg"></div>
+		<div class="content">
+			<Header />
+			<slot/>
+			<Sponsors />
+		</div>
+	</body>
+</html>
+
+<style>
+	.content {
+		position: relative;
+	}
+	.bg {
+		position:absolute;
+		top: 0;
+  		left: 0;
+		width: 100vw;
+		height: 100vh;
+  		background-size: cover;
+  		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 18%;
+	}
+	html,
+	body {
+		color: white;
+		background-color: black;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+</style>
+

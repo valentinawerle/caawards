@@ -1,0 +1,137 @@
+---
+import UpArrow from "@/icons/UpArrow.astro"
+
+const { pathname } = Astro.url
+const normalizedPathName = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
+
+const pages = [
+	{ name: "Acerca de", href: "/about"},
+	{ name: "Picantes", href: "/spicy"},
+	{ name: "Ternas 2023", href: "/categories"},
+    { name: "Sponsors 2023", href: "/sponsors"}
+].map((page) => ({
+	...page,
+	active: normalizedPathName === page.href,
+}))
+---
+
+<nav class="flex flex-col items-center content-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 md:relative z-30" id="nav">
+    <div class="flex flex-col md:flex-row">
+        <div class="flex pt-4 md:pt-0">
+            <a href="/"><img src="src/icons/LogoCaawards.svg" alt="logo-caawards" class="w-[110px] h-auto mr-8"></a>
+            <img src="src/icons/ListUp.svg" alt="list-icon" id="menuButton" class="md:hidden w-11 cursor-pointer">
+            <img src="src/icons/Close.svg" alt="close-icon" id="closeButton" class="md:hidden hidden w-12 cursor-pointer">
+        </div>
+        <ul
+            class="md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium hidden pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl"
+            id="menuMobileContent"
+        >
+            {
+                pages.map(({ name, href, active }) => 
+                    <li class="hover:scale-110 transition-transform duration-200">
+                        <a
+                            href={href}
+                            class:list={[
+                                {"text-white": !active},
+                                {"text-primary border-b-[1px]": active}
+                            ]}
+                        >
+                            <span>{name}</span>
+                        </a>
+                    </li>
+                )
+            }
+        </ul>
+    </div>
+    <div class="md:flex items-center pt-10 hidden md:pt-0 navContent">
+        <img src="src/icons/ArgFlag.svg" alt="arg-flag" class="mr-2">
+        <UpArrow strokeWidth="3" class:list={'hover:scale-110 transition-transform duration-200 cursor-pointer'}/>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a");
+
+        links.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                const currentPath = window.location.pathname;
+                const targetPath = link.getAttribute("href");
+
+                if (currentPath === targetPath) {
+                    event.preventDefault();
+                    console.log("Ya estás en ${currentPath}, no se recarga la página.");
+                }
+            });
+        });
+    });
+
+    import { $ } from "@/lib/dom-selector"
+
+    function toggleMenu(
+        nav: HTMLElement | null,
+		menuMobileContent: HTMLElement | null,
+		navContent: HTMLElement | null,
+        menuButton: HTMLElement | null,
+        closeIcon: HTMLElement | null
+    ) {
+        menuMobileContent?.classList.remove("transition-all", "ease-in-out", "duration-500", "transform", "opacity-0", "scale-90")
+        navContent?.classList.remove("transition-all", "ease-in-out", "duration-500", "transform", "opacity-0", "scale-90")
+        
+        void menuMobileContent?.offsetWidth;
+        void navContent?.offsetWidth;
+
+        menuButton?.classList.toggle("hidden")
+        
+        closeIcon?.classList.toggle("hidden")
+        closeIcon?.classList.toggle("flex")
+
+        menuMobileContent?.classList.toggle("hidden")
+        menuMobileContent?.classList.toggle("flex")
+
+        navContent?.classList.toggle("hidden")
+        navContent?.classList.toggle("flex")
+
+        menuMobileContent?.classList.add("transition-all", "ease-in-out", "duration-500", "transform", "opacity-0", "scale-90")
+        navContent?.classList.add("transition-all", "ease-in-out", "duration-500", "transform", "opacity-0", "scale-90")
+
+        nav?.classList.toggle("h-screen")
+        nav?.classList.toggle("bg-black/75")
+        document.body.classList.toggle("overflow-hidden")
+        document.body.classList.toggle("lg:overflow-auto")
+
+        setTimeout(() => {
+            menuMobileContent?.classList.toggle("opacity-100")
+            menuMobileContent?.classList.toggle("scale-100")
+            navContent?.classList.toggle("opacity-100")
+            navContent?.classList.toggle("scale-100")
+        }, 50)
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const nav = $("#nav")
+        const menuButton = $("#menuButton")
+        const menuMobileContent = $("#menuMobileContent")
+        const navContent = $(".navContent")
+        const closeIcon = $("#closeButton")
+
+        if (!menuButton || !menuMobileContent || !nav || !navContent || !closeIcon) {
+            console.error("Faltan uno o más elementos:", {
+                menuButton,
+                menuMobileContent,
+                nav,
+                navContent,
+                closeIcon
+            })
+            return
+        }
+
+        menuButton.addEventListener("click", () => {
+            toggleMenu(nav, menuMobileContent, navContent, menuButton, closeIcon)
+        })
+
+        closeIcon.addEventListener("click", () => {
+            toggleMenu(nav, menuMobileContent, navContent, menuButton, closeIcon)
+        })
+    })
+</script>

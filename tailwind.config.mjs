@@ -11,5 +11,13 @@ export default {
 			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		function ({ addUtilities }) {
+			addUtilities({
+				'.hover-scale': {
+					'@apply hover:scale-110 transition-transform duration-200': {},
+				},
+			});
+		},
+	],
 }

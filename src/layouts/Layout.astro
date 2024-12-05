@@ -1,6 +1,6 @@
 ---
+import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import Sponsors from '@/components/Sponsors.astro';
 
 interface Props {
 	title?: string,
@@ -29,7 +29,7 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		<div class="flex flex-col min-h-screen relative">
 			<Header />
 			<slot/>
-			<Sponsors />
+			<Footer />
 		</div>
 	</body>
 </html>

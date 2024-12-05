@@ -42,7 +42,7 @@ const pages = [
                 class="hidden md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl"
             >
                 {pages.map(({ name, href, active }) => (
-                    <li class="hover:scale-110 transition-transform duration-200">
+                    <li class="hover-scale">
                         <a
                             href={href}
                             class:list={[{
@@ -59,7 +59,7 @@ const pages = [
     </div>
     <div id="extraContent" class="hidden flex-row items-center pt-10 md:flex md:pt-0 md:flex-row navContent">
         <ArgFlag alt="arg-flag" class:list={'mr-2'} />
-        <UpArrow strokeWidth="3" class:list={'hover:scale-110 transition-transform duration-200 cursor-pointer'} />
+        <UpArrow strokeWidth="3" class:list={'hover-scale cursor-pointer'} />
     </div>
 </nav>
 

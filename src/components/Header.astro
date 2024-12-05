@@ -1,4 +1,8 @@
 ---
+import ArgFlag from "@/icons/ArgFlag.astro"
+import Close from "@/icons/Close.astro"
+import ListUp from "@/icons/ListUp.astro"
+import LogoCaawards from "@/icons/LogoCaawards.astro"
 import UpArrow from "@/icons/UpArrow.astro"
 
 const { pathname } = Astro.url
@@ -18,9 +22,9 @@ const pages = [
 <nav class="flex flex-col items-center content-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 md:relative z-30" id="nav">
     <div class="flex flex-col md:flex-row">
         <div class="flex pt-4 md:pt-0">
-            <a href="/"><img src="src/icons/LogoCaawards.svg" alt="logo-caawards" class="w-[110px] h-auto mr-8"></a>
-            <img src="src/icons/ListUp.svg" alt="list-icon" id="menuButton" class="md:hidden w-11 cursor-pointer">
-            <img src="src/icons/Close.svg" alt="close-icon" id="closeButton" class="md:hidden hidden w-12 cursor-pointer">
+            <a href="/"><LogoCaawards alt="logo-caawards" class:list={'w-[110px] h-auto mr-8'}/></a>
+            <ListUp alt="list-icon" id="menuButton" class:list={'md:hidden w-11 cursor-pointer'}/>
+            <Close alt="close-icon" id="closeButton" class:list={'md:hidden hidden w-12 cursor-pointer'}/>
         </div>
         <ul
             class="md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium hidden pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl"
@@ -44,7 +48,7 @@ const pages = [
         </ul>
     </div>
     <div class="md:flex items-center pt-10 hidden md:pt-0 navContent">
-        <img src="src/icons/ArgFlag.svg" alt="arg-flag" class="mr-2">
+        <ArgFlag alt="arg-flag" class:list={'mr-2'}/>
         <UpArrow strokeWidth="3" class:list={'hover:scale-110 transition-transform duration-200 cursor-pointer'}/>
     </div>
 </nav>

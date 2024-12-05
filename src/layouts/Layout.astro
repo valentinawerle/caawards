@@ -26,7 +26,7 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 	</head>
 	<body>	
 		<div style=`background-image: url(${bgimage});` class="bg"></div>
-		<div class="content">
+		<div class="flex flex-col min-h-screen relative">
 			<Header />
 			<slot/>
 			<Sponsors />
@@ -35,13 +35,8 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 </html>
 
 <style>
-	.content {
-		position: relative;
-	}
 	.bg {
 		position:absolute;
-		top: 0;
-  		left: 0;
 		width: 100vw;
 		height: 100vh;
   		background-size: cover;
@@ -55,8 +50,6 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		background-color: black;
 		margin: 0;
 		padding: 0;
-		width: 100%;
-		height: 100%;
 		overflow: hidden;
 	}
 </style>

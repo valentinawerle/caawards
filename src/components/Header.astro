@@ -22,20 +22,11 @@ const pages = [
             <img src="src/icons/ListUp.svg" alt="list-icon" id="menuButton" class="md:hidden w-11 cursor-pointer">
             <img src="src/icons/Close.svg" alt="close-icon" id="closeButton" class="md:hidden hidden w-12 cursor-pointer">
         </div>
-        <ul
-            class="md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium hidden pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl"
-            id="menuMobileContent"
-        >
+        <ul class="md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium hidden pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl" id="menuMobileContent">
             {
                 pages.map(({ name, href, active }) => 
                     <li class="hover:scale-110 transition-transform duration-200">
-                        <a
-                            href={href}
-                            class:list={[
-                                {"text-white": !active},
-                                {"text-primary border-b-[1px]": active}
-                            ]}
-                        >
+                        <a href={href} class:list={[{"text-white": !active}, {"text-primary border-b-[1px]": active}]}>
                             <span>{name}</span>
                         </a>
                     </li>

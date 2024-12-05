@@ -1,15 +1,16 @@
 ---
+import { AnimatedSeparator } from "@/components/ui/separator"
 import KickLogo from "@/icons/Sponsors/KickLogo.astro";
 import McLogo from "@/icons/Sponsors/McLogo.astro";
 import SpotifyLogo from "@/icons/Sponsors/SpotifyLogo.astro";
 ---
 
-<footer class="flex flex-col items-center lg:mt-6 xl:mt-8 2xl:mt-28">
+<div class="flex flex-col items-center mb-5 pb-24">
     <h2>Patrocinadores</h2>
-    <hr class="w-48 py-0.5">
+    <div class="w-48 mb-6"><AnimatedSeparator client:load /></div>
     <div class="flex gap-5">
-        <a><KickLogo class:list={'w-5 cursor-pointer'}/></a>
-        <a><McLogo class:list={'w-6 cursor-pointer'}/></a>
-        <a><SpotifyLogo class:list={'w-6 cursor-pointer'}/></a>
+        <a><KickLogo class:list={'w-5 cursor-pointer transition-transform hover:scale-125 duration-300 ease-in-out'}/></a>
+        <a><McLogo class:list={'w-6 cursor-pointer transition-transform hover:scale-125 duration-300 ease-in-out'}/></a>
+        <a><SpotifyLogo class:list={'w-6 cursor-pointer transition-transform hover:scale-125 duration-300 ease-in-out'}/></a>
     </div>
-</footer>
+</div>

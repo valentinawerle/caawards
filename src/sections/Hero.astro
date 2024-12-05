@@ -1,10 +1,15 @@
 ---
 import UpArrow from "@/icons/UpArrow.astro";
+import { PicanteModelCanvas } from "@/components/three/PicanteModelCanvas"
 ---
 
-<main class="flex-1 flex justify-center items-center min-h-[65vh]">
+<main class="flex-1 flex justify-center items-center">
     <section class="flex flex-col justify-center items-center gap-3 xl:gap-5 text-center">
-      <img src="/picante-dorado.webp" alt="picante-dorado" class="w-28 2xl:w-56 xl:w-40">
+
+      <div>
+        <PicanteModelCanvas client:load />
+      </div>
+
       <h1 class="font-Inter font-extrabold text-2xl md:max-w-none tracking-wide 2xl:text-5xl xl:text-4xl">COSCU ARMY AWARDS</h1>
       <h2 class="font-Inter 2xl:text-xl xl:text-base max-w-60 md:max-w-full">Premios a la comunidad de streamers de <span class="text-sky-400">Argentina</span></h2>
       <a href="/about" class="flex py-2 px-4 font-medium rounded bg-yellow-600 text-white gap-2 items-center hover:bg-yellow-500">

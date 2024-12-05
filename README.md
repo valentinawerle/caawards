@@ -3,7 +3,7 @@ Los Coscu Army Awards son una gala de premiación para los mejores streamers y y
 Site Original - https://caawards.com.ar/
 
 ## WEB
-![image](https://github.com/user-attachments/assets/930335f4-870e-424f-922b-ae0f92e9a5a9)
+![ebe228bee928b2225293b81f53bcb9df](https://github.com/user-attachments/assets/71e50900-a09d-4826-b527-1fda962d9c64)
 
 ## Responsive
 ![image](https://github.com/user-attachments/assets/e59efcf3-904b-4b58-b36d-383b4d7c3cb1)

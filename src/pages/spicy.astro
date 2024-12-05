@@ -1,7 +1,168 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
+import { AnimatedSeparator } from "@/components/ui/separator";
 ---
 
-<Layout bgimage="" title="Spicy">
-    
+<Layout bgimage="./assets/webp/bg-2.webp" title="Picantes">
+  <main>
+    <div class="container">
+      <div class="header">
+        <h1>Picantes</h1>
+        <AnimatedSeparator client:load />
+      </div>
+
+      <div class="grid">
+        <div class="year-block">
+          <h2>2023</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>DavoXeneize - David Quint</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>mazzatomas - Tomás Massa</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-block">
+          <h2>2022</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>Spreen - Ivan Buhajeruk</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>DavoXeneize - David Quint</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-block">
+          <h2>2021</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>Momo - Gerónimo Benavides</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>Spreen - Ivan Buhajeruk</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-block">
+          <h2>2020</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>Pimpeano - Galo Blasco</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>Brunenger - Bruno Kruszyn</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-block">
+          <h2>2019</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>Grafo - Nicolás Graffigna</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>Nano - Mariano Nicolas</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="year-block">
+          <h2>2018</h2>
+          <div class="awards">
+            <div>
+              <h3>Streamer del año</h3>
+              <p>Frankkaster - Francisco Postiglione</p>
+            </div>
+            <div>
+              <h3>Streamer Revelación</h3>
+              <p>Zeko - Federico Cristalino</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    overflow-y: auto;
+    color: white;
+  }
+
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 3.75rem;
+    font-weight: bold;
+    margin-bottom: 0rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .year-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  h2 {
+    font-size: 3.75rem;
+    font-weight: 300;
+  }
+
+  .awards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: #a0aec0;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+</style>

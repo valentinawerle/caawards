@@ -1,7 +1,131 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { AnimatedSeparator } from "@/components/ui/separator";
+import { Image } from 'astro:assets';
+
+const sponsors = [
+  { href: "https://kick.com", src: "/assets/sponsors/kick.svg", alt: "Kick", featured: true },
+  { href: "https://www.mcdonalds.com.ar", src: "/assets/sponsors/mcdonals.svg", alt: "McDonald's" },
+  { href: "https://www.spotify.com/premium/", src: "/assets/sponsors/spotify.svg", alt: "Spotify" },
+  { href: "https://kingofthekongo.com.ar", src: "/assets/sponsors/kongo.webp", alt: "KingOfTheKongo" },
+  { href: "https://www.aorus.com/es-ar", src: "/assets/sponsors/aorus.png", alt: "Aorus" },
+  { href: "https://www.logitechstore.com.ar/", src: "/assets/sponsors/logitech.svg", alt: "Logitech" },
+];
 ---
 
-<Layout bgimage="" title="Sponsors">
+<Layout title="Sponsors">
+  <body>
+    <div style=`background-image: url(./assets/webp/bg-2.webp);` class="bg"></div> 
+  </body>
+  <main>
+    <div class="content">
+      <div class="title">
+        <h1>Patrocinadores</h1>
+        <AnimatedSeparator client:load />
+      </div>
 
+      <div class="sponsors">
+        {sponsors.filter(s => s.featured).map((sponsor) => (
+          <div class="featured-sponsor">
+            <a href={sponsor.href} target="_blank" rel="nofollow">
+              <div class="sponsor-image">
+                <Image src={sponsor.src} alt={sponsor.alt} width={400} height={200} />
+              </div>
+            </a>
+          </div>
+        ))}
+
+        <div class="sponsor-grid">
+          {sponsors.filter(s => !s.featured).map((sponsor) => (
+            <a href={sponsor.href} target="_blank" rel="nofollow">
+              <div class="sponsor-image">
+                <Image src={sponsor.src} alt={sponsor.alt} width={150} height={100} />
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 1rem;
+  }
+
+  .bg {
+		position:absolute;
+		width: 100%;
+		height: 100%;
+  		background-size: cover;
+  		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 18%;
+	}
+
+  .content {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0rem;
+    color: white;
+  }
+
+  .sponsors {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .featured-sponsor {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sponsor-image {
+    position: relative;
+    aspect-ratio: 2 / 1;
+    transition: all 0.3s;
+  }
+
+  .sponsor-image:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  /* PARA EVITAR IMAGENES NEGRAS (SE PIEDEN EN EL FONDO) */
+  .sponsor-image img[src$=".png"],
+  .sponsor-image img[src$=".webp"] {
+    filter: brightness(0) invert(1);
+  }
+  /*  */
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.75rem;
+    }
+
+    .sponsor-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
+</style>

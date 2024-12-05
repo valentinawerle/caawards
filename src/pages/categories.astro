@@ -1,7 +1,119 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { AnimatedSeparator } from '@/components/ui/separator';
+import Laureles from '@/components/ui/laureles';
+
+const categories = [
+  "Streamer del año",
+  "Streamer revelación",
+  "Streamer promesa",
+  "Evento Destacado",
+  "Programa de Stream",
+  "Evento recurrente",
+  "Streamer IRL",
+  "Streamer Productor",
+  "Streamer Alternativo",
+  "Streamer Musical",
+  "Streamer de Exteriores",
+  "Streamer Deportivo",
+  "Streamer Variedad",
+  "Grupo en Stream",
+  "Streamer de Slots",
+  "Streamer de Roleplay",
+  "Streamer de Valorant",
+  "Streamer de CS",
+  "Streamer de Lol",
+  "Clip del año",
+  "Streamer compromiso",
+  "Timming del año",
+  "Fail del año",
+  "Tilteo del año",
+  "Susto del año"
+];
+
+const year = 2023;
 ---
 
-<Layout bgimage="" title="Ternas">
-
+<Layout bgimage="./assets/webp/bg-2.webp" title={`Ternas ${year}`}>
+    <main>
+      <div class="content">
+        <div class="title-container">
+          <h1>Ternas {year}</h1>
+          <AnimatedSeparator client:load />
+        </div>
+        
+        <div class="categories-grid">
+          {categories.map((category, index) => (
+            <Laureles title={category} year={year} isGold={index === 0 || index === 1 || index === 2} />
+          ))}
+        </div>
+      </div>
+    </main>
 </Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 1rem;
+  }
+
+  .content {
+    max-width: 80rem;
+    margin: 0 auto;
+    color: white;
+  }
+
+  .title-container {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0rem;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  @media (min-width: 640px) {
+    main {
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .title-container {
+      margin-bottom: 4rem;
+    }
+
+    .categories-grid {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .categories-grid {
+      grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .categories-grid {
+      grid-template-columns: repeat(5, minmax(200px, 1fr));
+    }
+  }
+</style>

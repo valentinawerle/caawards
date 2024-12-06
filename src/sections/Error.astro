@@ -2,12 +2,12 @@
 import LogoCaawards from '@/icons/LogoCaawards.astro';
 ---
 
-<section class="flex items-center justify-evenly">
-    <a href="/"><LogoCaawards class:list={'w-[680px] h-auto'}/></a>
+<section class="flex items-center md:justify-evenly justify-evenly flex-col-reverse xl:flex-row flex-1">
+    <a href="/"><LogoCaawards class:list={'md:w-[680px] w-80 h-auto'}/></a>
     <div class="flex flex-col items-center gap-3">
-        <h2 class="text-4xl text-primary italic">ERROR 404</h2>
-        <h3 class="text-3xl font-medium">PÁGINA NO ENCONTRADA</h3>
-        <p class="w-96 text-center text-xl">
+        <h2 class="xl:text-5xl text-4xl text-primary italic">ERROR 404</h2>
+        <h3 class="xl:text-4xl md:text-3xl text-2xl font-medium">PÁGINA NO ENCONTRADA</h3>
+        <p class="md:w-96 w-80 text-center text-xl xl:text-2xl xl:w-[400px]">
             ¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección <span class="text-primary font-semibold">URL</span> sea correcta.
         </p>
     </div>

@@ -1,16 +1,24 @@
 ---
+import GithubIcon from "@/icons/footer/GithubIcon.astro";
 import InstagramIcon from "@/icons/footer/InstagramIcon.astro";
 import TwitterIcon from "@/icons/footer/TwitterIcon.astro";
+
+const icons = [
+    { Image: GithubIcon, href: "https://github.com/BanKinf/caawards" },
+    { Image: InstagramIcon, href: "https://www.instagram.com/caawards" },
+    { Image: TwitterIcon, href: "https://x.com/caaward" },
+];
 ---
 
-<footer class="flex flex-col items-center mb-16 md:mb-12 gap-2">
+<footer class="flex flex-col items-center mb-16 md:mb-12 md:pt-5 gap-2">
    <div class="flex gap-2">
-        <a href="https://x.com/caawards"><TwitterIcon class:list={'hover-scale w-5'}/></a>
-        <a href="https://www.instagram.com/caawards"><InstagramIcon class:list={'hover-scale w-5'} /></a>
+      {icons.map(({ Image, href }) => (
+         <a href={href} target="_blank" rel="noopener noreferrer" class="hover-scale">
+            <Image class="w-5" />
+         </a>
+      ))}
    </div>
    <div class="flex items-center gap-1 font-Inter text-xs">
-    <h5>Coscu Army Awards</h5>
-    <span>|</span>
-    <h5>Derechos de autor © 2024</h5>
+      <h5>Coscu Army Awards | Derechos de autor © 2024</h5>
    </div>
 </footer>

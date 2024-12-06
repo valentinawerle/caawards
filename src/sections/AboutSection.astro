@@ -1,28 +1,32 @@
 ---
-
+import { aboutParagraphs } from "@/data/about.ts";
 ---
 
-<section>
-    <h2>Sobre Nosotros</h2>
-    <p>
-        Los Coscu Army Awards es un evento que premia y homenajea a streamers de la comunidad de Twitch de Argentina, dirigido por el streamer argentino Martín Pérez Disalvo.
-    </p>
-    <p>
-        En 2018, organizó el primer evento de la Coscu Army Awards en la Escuela Da Vinci, y fue transmitido por Twitch. El evento alcanzó un pico de 40 mil espectadores, superando al streamer más popular de la plataforma en el mundo en esa época. 
-    </p>
-    <p>
-        En 2019, se realizó la segunda edición en el Estadio Obras Sanitarias de CABA, contó con un pico de casi 100 mil espectadores.
-    </p>
-    <p>
-        En 2020, se organizó la tercera edición en el Estadio Obras Sanitarias, superó los 425 mil espectadores y se convirtió en la transmisión más vista de la plataforma en Latinoamérica, y los streamers le otorgaron a Coscu el reconocimiento de "Streamer Leyenda".
-    </p>
-    <p>
-        En 2021, se realizó la cuarta edición en el Hotel Hilton. Además homenajearon a Frankkaster, Grafo y Pimpeano ganadores en años anteriores con un anillo de oro como obsequio.
-    </p>
-    <p>
-        En 2022, hubo un salto importante para la comunidad al realizar la quinta edición en el monumento histórico de Argentina: el Teatro Colón, contó con más de 200 mil espectadores y más de 2.500 invitados.
-    </p>
-    <p>
-        En 2023, Tuvimos la oportunidad de tener la sexta edición en el Luna Park, teniendo casi una duración de 6 horas, el streamer del año fue DavoXeneize, quien dedicó el premio a Juan Román Riquelme.
-    </p>
+<section class="flex md:flex-row flex-col flex-1 items-center justify-center gap-8 p-9 md:px-20 w-full">
+    <div class="md:w-3/4 w-full">
+        <h2 class="mb-4 2xl:text-6xl text-4xl font-Inter font-light">Sobre Nosotros</h2>
+        <div class="flex flex-col 2xl:gap-5 gap-3 font-Inter font-light text-sm 2xl:text-xl 2xl:font-extralight">
+            {aboutParagraphs.map(paragraph => (
+                    <p>{paragraph}</p>
+                ))
+            }
+        </div>
+    </div>
+    <div class="flex flex-col items-center w-full md:w-1/4 gap-2">
+        <h2 class="text-4xl md:text-5xl 2xl:text-7xl text-primary tracking-widest font-Inter font-semibold">2023</h2>
+        <div class="flex md:flex-col flex-row items-center text-center gap-4 font-Inter font-light 2xl:text-xl">
+            <div>
+                <h3 class="font-semibold text-xs 2xl:text-xl">PICO DE ESPECTADORES</h3>
+                <span>125.473</span>
+            </div>
+            <div>
+                <h3 class="font-semibold text-xs 2xl:text-xl">DURACION</h3>
+                <span>5h 45m</span>
+            </div>
+            <div>
+                <h3 class="font-semibold text-xs 2xl:text-xl">CATEGORIAS</h3>
+                <span>52</span>
+            </div>
+        </div>
+    </div>
 </section>

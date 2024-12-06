@@ -44,13 +44,20 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		background-repeat: no-repeat;
 		opacity: 18%;
 	}
+	
 	html,
 	body {
 		color: white;
-		background-color: black;
+		background-color: #0b0b0b;
 		margin: 0;
 		padding: 0;
-		overflow: hidden;
+		overflow-x: hidden;
+	}
+	
+	@media (min-width: 600px) {
+		html,body {
+			overflow: hidden;
+		}
 	}
 </style>
 

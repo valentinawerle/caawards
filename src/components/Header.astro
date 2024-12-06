@@ -20,7 +20,7 @@ const pages = [
 ---
 
 <nav 
-    class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 z-30" 
+    class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 2xl:px-8 2xl:pt-8 2xl:pb-0 z-30" 
     id="nav"
     aria-label="Main navigation"
 >
@@ -96,6 +96,7 @@ const pages = [
 
             nav.classList.toggle("h-screen");
             nav.classList.toggle("bg-black/75");
+            document.documentElement.classList.toggle("overflow-hidden");
             document.body.classList.toggle("overflow-hidden");
         };
 

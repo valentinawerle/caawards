@@ -10,7 +10,7 @@ Site Original - https://caawards.com.ar/
 
 ## Figma | Created by BanKing
 ![image](https://github.com/user-attachments/assets/aab8ad69-f149-4a95-98cf-ddfdf7870459)
-![image](https://github.com/user-attachments/assets/1e98fe58-6170-42c0-af29-9e051f0c3c97)
+![image](https://github.com/user-attachments/assets/d86df765-7570-4e75-adf6-7566aabb6f87)
 
 ## 🛠️ Stack Dev
 [![My Skills](https://skillicons.dev/icons?i=astro,tailwind,js,html,css)](https://skillicons.dev)

@@ -1,0 +1,37 @@
+---
+import { awards } from "@/data/spicies.ts";
+---
+
+<section class="relative min-h-screen">
+
+  <div class="relative z-10 px-4 py-16 md:py-24">
+    <div class="max-w-6xl mx-auto text-white">
+      <div class="text-center mb-16">
+        <h1 class="text-6xl font-bold mb-4">Picantes</h1>
+        <div class="animated-separator mx-auto"></div>
+      </div>
+
+      <div class="grid text-center grid-cols-1 md:grid-cols-2 gap-16">
+        {awards.map((award) => (
+          <div class="space-y-4">
+            <h2 class="text-6xl font-light">{award.year}</h2>
+            <div class="space-y-2">
+              <div>
+                <h3 class="text-xl text-gray-400">Streamer del año</h3>
+                <p class="text-xl">
+                  {award.streamerOfTheYear.alias} - {award.streamerOfTheYear.name}
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl text-gray-400">Streamer Revelación</h3>
+                <p class="text-xl">
+                  {award.revelation.alias} - {award.revelation.name}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

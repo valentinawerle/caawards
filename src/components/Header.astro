@@ -106,23 +106,14 @@ const pages = [
     const menuButton = document.querySelector("#menuButton");
     const closeButton = document.querySelector("#closeButton");
     const menuMobileContent = document.querySelector("#menuMobileContent");
-    const navContent = document.querySelector(".navContent");
     const extraContent = document.querySelector("#extraContent");
 
-    if (
-      !menuButton ||
-      !closeButton ||
-      !menuMobileContent ||
-      !nav ||
-      !navContent ||
-      !extraContent
-    ) {
+    if (!menuButton || !closeButton || !menuMobileContent || !nav || !extraContent) {
       console.error("One or more elements are missing:", {
         menuButton,
         closeButton,
         menuMobileContent,
         nav,
-        navContent,
         extraContent,
       });
       return;
@@ -167,15 +158,9 @@ const pages = [
   }
 
   function initializeLanguageSelector() {
-    const languageSelector = document.querySelector(
-      "#languageSelector"
-    ) as HTMLButtonElement;
-    const languageDropdown = document.querySelector(
-      "#languageDropdown"
-    ) as HTMLUListElement;
-    const languageArrow = document.querySelector(
-      "#languageArrow"
-    ) as HTMLElement;
+    const languageSelector = document.querySelector("#languageSelector");
+    const languageDropdown = document.querySelector("#languageDropdown");
+    const languageArrow = document.querySelector("#languageArrow") as HTMLElement;
 
     if (!languageSelector || !languageDropdown || !languageArrow) {
       console.error("Language selector elements are missing");
@@ -185,7 +170,7 @@ const pages = [
     languageSelector.addEventListener("click", (event) => {
       event.stopPropagation();
       languageDropdown.classList.toggle("hidden");
-      (languageArrow as HTMLElement).style.transform =
+      languageArrow.style.transform =
         languageDropdown.classList.contains("hidden")
           ? "rotate(0deg)"
           : "rotate(180deg)";
@@ -193,13 +178,21 @@ const pages = [
 
     document.addEventListener("click", () => {
       languageDropdown.classList.add("hidden");
-      (languageArrow as HTMLElement).style.transform = "rotate(0deg)";
+      languageArrow.style.transform = "rotate(0deg)";
     });
 
     languageDropdown.addEventListener("click", (event) => {
       event.stopPropagation();
     });
+
+    const languageLinks = languageDropdown.querySelectorAll("a");
+    languageLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        setTimeout(updateActiveLink, 50);
+      });
+    });
   }
+
 
   function updateActiveLink() {
     const links = document.querySelectorAll("#menuMobileContent a");
@@ -228,5 +221,4 @@ const pages = [
 
     window.addEventListener("popstate", updateActiveLink);
   });
-
-</script> 
+</script>

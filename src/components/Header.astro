@@ -188,11 +188,12 @@ const pages = [
     const languageLinks = languageDropdown.querySelectorAll("a");
     languageLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        setTimeout(updateActiveLink, 50);
+        setTimeout(() => {
+          updateActiveLink();
+        }, 100);
       });
     });
   }
-
 
   function updateActiveLink() {
     const links = document.querySelectorAll("#menuMobileContent a");

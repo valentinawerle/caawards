@@ -186,22 +186,25 @@ const pages = [
     });
 
     const languageLinks = languageDropdown.querySelectorAll("a");
-    languageLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        setTimeout(() => {
-          updateActiveLink();
-        }, 100);
+      languageLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          setTimeout(() => {
+            updateActiveLink();
+          }, 100);
+        });
       });
-    });
+  }
+
+  function getCurrentPath() {
+    return window.location.pathname.replace(/\/$/, "");
   }
 
   function updateActiveLink() {
     const links = document.querySelectorAll("#menuMobileContent a");
+    const currentPath = getCurrentPath();
 
     links.forEach((link) => {
-      const href = link.getAttribute("href");
-      const currentPath = window.location.pathname;
-
+      const href = link.getAttribute("href")?.replace(/\/$/, "");
       if (currentPath === href) {
         link.classList.add("text-primary", "border-b-[1px]");
         link.classList.remove("text-white");
@@ -212,7 +215,7 @@ const pages = [
         link.removeAttribute("aria-current");
       }
     });
-  }
+  } 
 
   document.addEventListener("DOMContentLoaded", () => {
     initializeMenuToggle();

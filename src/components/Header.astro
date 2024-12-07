@@ -79,11 +79,17 @@ const pages = [
         const newPath = pathname.replace(`/${currentLang}`, `/${key}`);
         return (
         <li {...{ key }} class="flex items-center">
-          <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100`} >
+          <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`} >
             {key === "es" ? ( 
-              <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
+              <div class="flex items-center gap-2">
+                <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
+                <span>ES</span>
+              </div>
             ) : (
-            <UsaFlag alt="usa-flag" class:list={"w-5 h-5 mr-2"} />
+              <div class="flex items-center gap-2">
+                <UsaFlag alt="usa-flag" class:list={"w-5 h-5 mr-2"} />
+                <span>EN</span>
+              </div>
             )}
           </a>
         </li>
@@ -195,10 +201,32 @@ const pages = [
     });
   }
 
+  function updateActiveLink() {
+    const links = document.querySelectorAll("#menuMobileContent a");
+
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
+      const currentPath = window.location.pathname;
+
+      if (currentPath === href) {
+        link.classList.add("text-primary", "border-b-[1px]");
+        link.classList.remove("text-white");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("text-primary", "border-b-[1px]");
+        link.classList.add("text-white");
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initializeMenuToggle();
     preventReloadOnCurrentPage();
     initializeLanguageSelector();
+    updateActiveLink();
+
+    window.addEventListener("popstate", updateActiveLink);
   });
 
-</script>
+</script> 

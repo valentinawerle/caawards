@@ -74,23 +74,22 @@ const pages = [
         <UpArrow id="languageArrow" strokeWidth="3" class:list={"hover-scale cursor-pointer ml-1 transition-transform duration-300"} />
       </button>
       <ul id="languageDropdown" class="absolute right-0 mt-2 py-2 bg-black/40 rounded-md shadow-xl hidden">
-        {
-          Object.entries(languageList).map(([key]) => {
-            const newPath = pathname.replace(`/${currentLang}`, `/${key}`);
-            return (
-              <li>
-                <a href={newPath} class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                  {key === "es" ? (
-                    <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
-                  ) : (
-                    <UsaFlag alt="usa-flag" class:list={"w-5 h-5 mr-2"} />
-                  )}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>      
+      {
+      Object.entries(languageList).map(([key]) => {
+        const newPath = pathname.replace(`/${currentLang}`, `/${key}`);
+        return (
+        <li {...{ key }} class="flex items-center">
+          <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100`} >
+            {key === "es" ? ( 
+              <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
+            ) : (
+            <UsaFlag alt="usa-flag" class:list={"w-5 h-5 mr-2"} />
+            )}
+          </a>
+        </li>
+      );
+      })}
+      </ul>
     </div>
   </div>
 </nav>

@@ -8,9 +8,9 @@ import { PicanteModelCanvas } from "@/components/3D-Model/PicanteModelCanvas";
     <PicanteModelCanvas client:load className="h-48 md:h-80 xl:h-64 2xl:h-[550px] w-full"/> 
     <h1 class="font-Inter font-extrabold text-2xl md:max-w-none tracking-wide 2xl:text-5xl xl:text-4xl">COSCU ARMY AWARDS</h1>
     <h2 class="font-Inter my-3 2xl:text-xl xl:text-base max-w-60 md:max-w-full">Premios a la comunidad de streamers de <span class="text-sky-400">Argentina</span></h2>
-    <a href="/about" class="flex py-2 px-4 font-medium rounded bg-yellow-600 text-white gap-2 items-center hover:bg-yellow-500">
+    <a href="/about" class="flex py-2 px-4 font-medium rounded bg-yellow-600 text-white gap-2 items-center transition-all duration-300 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20 group">
       <span>Saber más</span>
-      <UpArrow strokeWidth="2" class:list={'w-3'} />
+      <UpArrow strokeWidth="2" class:list={['w-3', 'transition-transform duration-300', 'group-hover:rotate-180' ]} />
     </a>
   </section>
 </main>

@@ -1,8 +1,23 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Hero from '@/sections/Hero.astro';
----
+import { languageList } from '@/i18n/lang';
 
-<Layout bgimage="./bg-1.webp">
-	<Hero />
-</Layout>
+function getPreferredLanguage(acceptLanguage: string | null): string {
+  if (!acceptLanguage) return 'es';
+
+  const languages = acceptLanguage.split(',').map(lang => lang.trim().split(';')[0]);
+  
+  for (const lang of languages) {
+    const shortLang = lang.slice(0, 2).toLowerCase();
+    if (shortLang in languageList) {
+      return shortLang;
+    }
+  }
+
+  return 'es';
+}
+
+const acceptLanguage = Astro.request.headers.get('accept-language');
+const preferredLanguage = getPreferredLanguage(acceptLanguage);
+
+return Astro.redirect(`/${preferredLanguage}`);
+---

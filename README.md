@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # Coscu Army Awards - WebSite
 Los Coscu Army Awards son una gala de premiación para los mejores streamers y youtubers de Argentina y Sudamérica. El evento fue creado por el streamer argentino Martín “Coscu” Pérez Disalvo y se realiza desde 2018.
 Site Original - https://caawards.com.ar/
@@ -14,3 +16,11 @@ Site Original - https://caawards.com.ar/
 
 ## 🛠️ Stack Dev
 [![My Skills](https://skillicons.dev/icons?i=astro,tailwind,js,html,css)](https://skillicons.dev)
+
+**¡Gracias a todos los colaboradores!**
+
+<a href="https://github.com/BanKinf/caawards/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=BanKinf/caawards" />
+</a>
+
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>

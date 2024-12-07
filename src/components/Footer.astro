@@ -2,6 +2,14 @@
 import GithubIcon from "@/icons/footer/GithubIcon.astro";
 import InstagramIcon from "@/icons/footer/InstagramIcon.astro";
 import TwitterIcon from "@/icons/footer/TwitterIcon.astro";
+import { useTranslations } from "@/i18n/utils";
+import { languageList } from "@/i18n/lang";
+
+const currentLang = Astro.currentLocale || "es";
+
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
 
 const icons = [
     { Image: GithubIcon, href: "https://github.com/BanKinf/caawards", alt:"github-icon" },
@@ -19,6 +27,6 @@ const icons = [
       ))}
    </div>
    <div class="flex items-center gap-1 font-Inter text-xs">
-      <h3>Coscu Army Awards | Derechos de autor © 2024</h3>
+      <h3>Coscu Army Awards | {translateLabels("footer.copyright")} © 2024</h3>
    </div>
 </footer>

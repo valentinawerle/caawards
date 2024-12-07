@@ -19,5 +19,5 @@ function getPreferredLanguage(acceptLanguage: string | null): string {
 const acceptLanguage = Astro.request.headers.get('accept-language');
 const preferredLanguage = getPreferredLanguage(acceptLanguage);
 
-return Astro.redirect(`/${preferredLanguage}`);
+return Astro.redirect(`/${preferredLanguage}`, 301);
 ---

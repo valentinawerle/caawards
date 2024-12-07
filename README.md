@@ -15,7 +15,7 @@ Site Original - https://caawards.com.ar/
 ![image](https://github.com/user-attachments/assets/d86df765-7570-4e75-adf6-7566aabb6f87)
 
 ## 🛠️ Stack Dev
-[![My Skills](https://skillicons.dev/icons?i=astro,tailwind,js,html,css)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=astro,react,tailwind,js,html,css)](https://skillicons.dev)
 
 **¡Gracias a todos los colaboradores!**
 

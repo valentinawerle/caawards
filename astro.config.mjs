@@ -17,7 +17,7 @@ export default defineConfig({
 			enabled: true,
 		},
 	}),
-  output: "server",
+  output: "static",
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],

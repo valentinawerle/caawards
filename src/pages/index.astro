@@ -1,5 +1,7 @@
 ---
 import { languageList } from '@/i18n/lang';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/sections/Hero.astro';
 
 function getPreferredLanguage(acceptLanguage: string | null): string {
   if (!acceptLanguage) return 'es';
@@ -19,5 +21,12 @@ function getPreferredLanguage(acceptLanguage: string | null): string {
 const acceptLanguage = Astro.request.headers.get('accept-language');
 const preferredLanguage = getPreferredLanguage(acceptLanguage);
 
-return Astro.redirect(`/${preferredLanguage}`, 301);
+if (preferredLanguage === 'es') {
+} else {
+  return Astro.redirect(`/${preferredLanguage}`, 301);
+}
 ---
+
+<Layout bgimage="/bg-1.webp">
+	<Hero />
+</Layout>

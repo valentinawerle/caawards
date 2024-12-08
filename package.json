@@ -12,6 +12,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.0.0",
     "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^8.0.0",
     "@react-three/drei": "^9.118.0",
     "@react-three/fiber": "^9.0.0-rc.1",
     "astro": "^4.16.16",

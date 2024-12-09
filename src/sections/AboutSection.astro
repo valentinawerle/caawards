@@ -1,41 +1,88 @@
 ---
 import { aboutParagraphs } from "@/data/about.ts";
-
 import { useTranslations } from "@/i18n/utils";
 import { languageList } from "@/i18n/lang";
 
 const currentLang = (Astro.currentLocale || "es") as keyof typeof aboutParagraphs;
 const paragraphs = aboutParagraphs[currentLang] || aboutParagraphs["es"];
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
-<section class="flex md:flex-row flex-col flex-1 items-center justify-center gap-8 p-9 md:px-20 w-full">
-    <div class="md:w-3/4 w-full">
-        <h2 class="mb-4 2xl:text-6xl text-4xl font-Inter font-light">{translateLabels("about.title")}</h2>
-        <div class="flex flex-col 2xl:gap-5 gap-3 font-Inter font-light text-sm 2xl:text-xl 2xl:font-extralight">
-            {paragraphs.map((paragraph: string) => (
-                <p>{paragraph}</p>
-            ))}           
-        </div>
+<section
+  class="flex md:flex-row flex-col flex-1 items-center justify-center gap-8 p-9 md:px-20 w-full"
+  id="stats-section"
+>
+  <div class="md:w-3/4 w-full">
+    <h2 class="mb-4 2xl:text-6xl text-4xl font-Inter font-light">{translateLabels("about.title")}</h2>
+    <div class="flex flex-col 2xl:gap-5 gap-3 font-Inter font-light text-sm 2xl:text-xl 2xl:font-extralight">
+      {paragraphs.map((paragraph: string) => (
+        <p>{paragraph}</p>
+      ))}
     </div>
-    <div class="flex flex-col items-center w-full md:w-1/4 gap-2">
-        <h2 class="text-4xl md:text-5xl 2xl:text-7xl text-primary tracking-widest font-Inter font-semibold">2023</h2>
-        <div class="flex md:flex-col flex-row items-center text-center gap-4 font-Inter font-light 2xl:text-xl">
-            <div>
-                <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.viewspeak")}</h3>
-                <span>125.473</span>
-            </div>
-            <div>
-                <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.duration")}</h3>
-                <span>5h 45m</span>
-            </div>
-            <div>
-                <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.categories")}</h3>
-                <span>52</span>
-            </div>
-        </div>
+  </div>
+  <div class="flex flex-col items-center w-full md:w-1/4 gap-2">
+    <h2 class="text-4xl md:text-5xl 2xl:text-7xl text-primary tracking-widest font-Inter font-semibold">2023</h2>
+    <div class="flex md:flex-col flex-row items-center text-center gap-4 font-Inter font-light 2xl:text-xl">
+      <div>
+        <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.viewspeak")}</h3>
+        <span class="counter" data-target="125473">0</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.duration")}</h3>
+        <span class="static-counter">5h 45m</span>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xs 2xl:text-xl">{translateLabels("about.categories")}</h3>
+        <span class="counter" data-target="52">0</span>
+      </div>
     </div>
+  </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll<HTMLSpanElement>(".counter");
+    const section = document.getElementById("stats-section");
+
+    if (!section) return;
+
+    const formatNumber = (num: number): string => {
+      return num.toLocaleString("es-ES");
+    };
+
+    const animateCount = (el: HTMLSpanElement, target: number) => {
+      let start = 0;
+      const duration = 5000;
+      const increment = Math.ceil(target / (duration / 16));
+
+      const updateCount = () => {
+        start += increment;
+        if (start >= target) {
+          el.textContent = formatNumber(target);
+        } else {
+          el.textContent = formatNumber(start);
+          requestAnimationFrame(updateCount);
+        }
+      };
+
+      requestAnimationFrame(updateCount);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            counters.forEach((counter) => {
+              const target = parseInt(counter.getAttribute("data-target") || "0", 10);
+              animateCount(counter, target);
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+  });
+</script>

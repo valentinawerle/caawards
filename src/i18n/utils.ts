@@ -1,9 +1,19 @@
-import { labels } from "./lang";
+import { labels, languageList } from "./lang";
 
-const defaultLang = 'es';
+type Lang = keyof typeof languageList;
+type LabelKey = keyof typeof labels.es & keyof typeof labels.en;
 
-export function useTranslations(lang: keyof typeof labels) {
-    return function translate(key: keyof typeof labels[typeof defaultLang]) {
+const getStoredLanguage = (): Lang => {
+    if (typeof localStorage !== 'undefined') {
+        return (localStorage.getItem('preferred-lang') as Lang) || 'es';
+    }
+    return 'es';
+};
+
+const defaultLang = getStoredLanguage();
+
+export function useTranslations(lang: Lang) {
+    return function translate(key: LabelKey): string {
         return labels[lang][key] || labels[defaultLang][key];
     }
 }

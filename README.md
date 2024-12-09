@@ -19,8 +19,8 @@ Site Original - https://caawards.com.ar/
 
 **¡Gracias a todos los colaboradores!**
 
-<a href="https://github.com/BanKinf/caawards/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=BanKinf/caawards" />
+<a href="https://github.com/valentinawerle/caawards/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=valentinawerle/caawards" />
 </a>
 
 - @Dantito : Por crear el 3D Model del picante.

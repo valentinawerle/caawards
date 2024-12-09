@@ -170,6 +170,17 @@ const pages = [
       return;
     } 
 
+    const storedLang = localStorage.getItem('preferred-lang');
+    if (storedLang) {
+        const newPath = storedLang === "en" 
+            ? `/en${window.location.pathname.replace(/^\/en/, "")}` 
+            : window.location.pathname.replace(/^\/en/, "");
+        
+        if (window.location.pathname !== newPath) {
+            window.location.href = newPath;
+        }
+    }
+
     languageSelector.addEventListener("click", (event) => {
       event.stopPropagation();
       languageDropdown.classList.toggle("hidden");
@@ -190,11 +201,15 @@ const pages = [
 
     const languageLinks = languageDropdown.querySelectorAll("a");
     languageLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        setTimeout(() => {
-          updateActiveLink();
-        }, 100);
-      });
+        link.addEventListener("click", (event) => {
+            const href = link.getAttribute("href");
+            const newLang = href?.includes("/en") ? "en" : "es";
+            localStorage.setItem('preferred-lang', newLang);
+            
+            setTimeout(() => {
+                updateActiveLink();
+            }, 100);
+        });
     });
   }
 

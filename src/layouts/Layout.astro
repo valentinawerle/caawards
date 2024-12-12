@@ -26,7 +26,9 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		<title>{webTitle}</title>
 	</head>
 	<body>	
-		<div style=`background-image: url(${bgimage});` class="bg"></div>
+		<div
+		style={`background-image: url('${bgimage}'); background-attachment: fixed;`}
+		class="bg start-0" />
 		<div class="flex flex-col min-h-screen relative">
 			<Header />
 				<slot />

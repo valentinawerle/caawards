@@ -11,9 +11,10 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 <section
   class="flex md:flex-row flex-col flex-1 items-center justify-center gap-8 p-9 md:px-20 w-full"
   id="stats-section"
+  transition:persist
 >
   <div class="md:w-3/4 w-full">
-    <h2 class="mb-4 2xl:text-6xl text-4xl font-Inter font-light">{translateLabels("about.title")}</h2>
+    <h2 class="mb-4 2xl:text-6xl text-center md:text-left text-4xl font-Inter font-light">{translateLabels("about.title")}</h2>
     <div class="flex flex-col 2xl:gap-5 gap-3 font-Inter font-light text-sm 2xl:text-xl 2xl:font-extralight">
       {paragraphs.map((paragraph: string) => (
         <p>{paragraph}</p>
@@ -40,7 +41,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const counters = document.querySelectorAll<HTMLSpanElement>(".counter");
     const section = document.getElementById("stats-section");
 
@@ -52,7 +53,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 
     const animateCount = (el: HTMLSpanElement, target: number) => {
       let start = 0;
-      const duration = 5000;
+      const duration = 500;
       const increment = Math.ceil(target / (duration / 16));
 
       const updateCount = () => {

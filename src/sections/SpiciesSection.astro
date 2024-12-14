@@ -1,0 +1,32 @@
+---
+import { awards } from "@/data/spicies.ts";
+import { useTranslations } from "@/i18n/utils";
+import { languageList } from "@/i18n/lang";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
+---
+<section class="flex flex-1 justify-center 2xl:mt-28 md:my-0 my-10" >
+  <div class="grid text-center grid-cols-1 md:grid-cols-3 gap-16">
+    {awards.map((award) => (
+      <div class="space-y-4">
+        <h2 class="2xl:text-6xl text-4xl font-light">{award.year}</h2>
+        <div class="space-y-2">
+          <div>
+            <h3 class="2xl:text-xl md:text-lg text-gray-400">{translateLabels("spicies.streamerOfTheYear")}</h3>
+            <p class="2xl:text-xl md:text-base">
+              {award.streamerOfTheYear.alias} - {award.streamerOfTheYear.name}
+            </p>
+          </div>
+          <div>
+            <h3 class="2xl:text-xl md:text-lg text-gray-400">{translateLabels("spicies.revelation")}</h3>
+            <p class="2xl:text-xl md:text-base">
+              {award.revelation.alias} - {award.revelation.name}
+            </p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

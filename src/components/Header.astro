@@ -1,126 +1,248 @@
 ---
 import ArgFlag from "@/icons/ArgFlag.astro";
+import UsaFlag from "@/icons/UsaFlag.astro";
 import Close from "@/icons/Close.astro";
 import ListUp from "@/icons/ListUp.astro";
 import LogoCaawards from "@/icons/LogoCaawards.astro";
 import UpArrow from "@/icons/UpArrow.astro";
+import { languageList } from "@/i18n/lang";
+import { useTranslations } from "@/i18n/utils";
+
+const currentLang = Astro.currentLocale || "es";
+
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
 
 const { pathname } = Astro.url;
-const normalizedPathName = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+const normalizedPathName =
+  pathname.length > 1 && pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
 
 const pages = [
-    { name: "Acerca de", href: "/about" },
-    { name: "Picantes", href: "/spicy" },
-    { name: "Ternas 2023", href: "/categories" },
-    { name: "Sponsors 2023", href: "/sponsors" }
+  { name: `${translateLabels("header.about")}`, href: "/about" },
+  { name: `${translateLabels("header.spicies")}`, href: "/spicies" },
+  { name: `${translateLabels("header.categories")}`, href: "/categories" },
+  { name: `${translateLabels("header.sponsors")}`, href: "/sponsors" },
 ].map((page) => ({
-    ...page,
-    active: normalizedPathName === page.href,
+  ...page,
+  href: `${currentLang === "en" ? "/en" : ""}${page.href}`,
+  active: normalizedPathName === `${currentLang === "en" ? "/en" : ""}${page.href}`,
 }));
 ---
 
-<nav 
-    class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 z-30" 
-    id="nav"
-    aria-label="Main navigation"
->
-    <div class="flex flex-col md:flex-row">
-            <div class="flex pt-6 md:pt-0">
-                <a href="/" aria-label="Home">
-                    <LogoCaawards alt="logo-caawards" class:list={'w-[110px] h-auto mr-8'} />
+<nav class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 2xl:px-8 2xl:pt-8 2xl:pb-0 z-30" id="nav" aria-label="Main navigation">
+  <div class="flex flex-col md:flex-row">
+    <div class="flex pt-6 md:pt-0">
+      <a href={currentLang === "en" ? "/en" : "/"} aria-label="Home">
+        <LogoCaawards alt="logo-caawards" class:list={"w-[110px] h-auto mr-8"} />
+      </a>
+      <button id="menuButton" class="md:hidden w-11 cursor-pointer" aria-label="Open menu">
+        <ListUp alt="list-icon" />
+      </button>
+      <button id="closeButton" class="md:hidden hidden w-12 cursor-pointer" aria-label="Close menu">
+        <Close alt="close-icon" />
+      </button>
+    </div>
+
+    <ul id="menuMobileContent" class="hidden md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl">
+      {
+        pages.map(({ name, href, active }) => (
+          <li class="hover-scale">
+            <a href={href} class:list={[{"text-white": !active, "text-primary border-b-[1px]": active }]} aria-current={active ? "page" : undefined}>
+              <span>{name}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div id="extraContent" class="hidden flex-row items-center pt-10 md:flex md:pt-0 md:flex-row navContent" >
+    <div class="relative">
+      <button id="languageSelector" class="flex items-center" aria-label="Select language">
+        {
+          currentLang === "es" ? (
+            <ArgFlag alt="arg-flag" class:list={"w-6 h-6"} />
+          ) : (
+            <UsaFlag alt="usa-flag" class:list={"w-6 h-6"} />
+          )
+        }
+        <UpArrow id="languageArrow" strokeWidth="3" class:list={"hover-scale cursor-pointer ml-1 transition-transform duration-300"} />
+      </button>
+      <ul id="languageDropdown" class="absolute right-0 mt-2 py-2 bg-black/40 rounded-md shadow-xl hidden">
+        {
+          Object.entries(languageList).map(([key]) => {
+            const newPath = key === "en" 
+              ? `/en${pathname.replace(/^\/en/, "")}` 
+              : pathname === "/en" 
+                ? "/" 
+                : pathname.replace(/^\/en/, "");
+        
+            return (
+              <li {...{ key }} class="flex items-center">
+                <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`}>
+                  {key === "es" ? ( 
+                    <div class="flex items-center gap-2">
+                      <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
+                      <span>ES</span>
+                    </div>
+                  ) : (
+                    <div class="flex items-center gap-2">
+                      <UsaFlag alt="usa-flag" class:list={"w-5 h-5 mr-2"} />
+                      <span>EN</span>
+                    </div>
+                  )}
                 </a>
-                <button id="menuButton" class="md:hidden w-11 cursor-pointer" aria-label="Open menu">
-                    <ListUp alt="list-icon" />
-                </button>
-                <button id="closeButton" class="md:hidden hidden w-12 cursor-pointer" aria-label="Close menu">
-                    <Close alt="close-icon" />
-                </button>
-            </div>
-    
-            <ul
-                id="menuMobileContent"
-                class="hidden md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl"
-            >
-                {pages.map(({ name, href, active }) => (
-                    <li class="hover-scale">
-                        <a
-                            href={href}
-                            class:list={[{
-                                "text-white": !active,
-                                "text-primary border-b-[1px]": active
-                            }]}
-                            aria-current={active ? "page" : undefined}
-                        >
-                            <span>{name}</span>
-                        </a>
-                    </li>
-                ))}
-            </ul>
+              </li>
+            );
+          })
+        }
+      </ul>
     </div>
-    <div id="extraContent" class="hidden flex-row items-center pt-10 md:flex md:pt-0 md:flex-row navContent">
-        <ArgFlag alt="arg-flag" class:list={'mr-2'} />
-        <UpArrow strokeWidth="3" class:list={'hover-scale cursor-pointer'} />
-    </div>
+  </div>
 </nav>
 
 <script>
-    function initializeMenuToggle() {
-        const nav = document.querySelector("#nav");
-        const menuButton = document.querySelector("#menuButton");
-        const closeButton = document.querySelector("#closeButton");
-        const menuMobileContent = document.querySelector("#menuMobileContent");
-        const navContent = document.querySelector(".navContent");
-        const extraContent = document.querySelector("#extraContent");
+  function initializeMenuToggle() {
+    const nav = document.querySelector("#nav");
+    const menuButton = document.querySelector("#menuButton");
+    const closeButton = document.querySelector("#closeButton");
+    const menuMobileContent = document.querySelector("#menuMobileContent");
+    const extraContent = document.querySelector("#extraContent");
 
-        if (!menuButton || !closeButton || !menuMobileContent || !nav || !navContent || !extraContent) {
-            console.error("One or more elements are missing:", {
-                menuButton,
-                closeButton,
-                menuMobileContent,
-                nav,
-                navContent,
-                extraContent
-            });
-            return;
+    if (!menuButton || !closeButton || !menuMobileContent || !nav || !extraContent) {
+      console.error("One or more elements are missing:", {
+        menuButton,
+        closeButton,
+        menuMobileContent,
+        nav,
+        extraContent,
+      });
+      return;
+    }
+
+    const toggleMenu = () => {
+      menuButton.classList.toggle("hidden");
+      closeButton.classList.toggle("hidden");
+
+      menuMobileContent.classList.toggle("hidden");
+      menuMobileContent.classList.toggle("flex");
+
+      extraContent.classList.toggle("hidden");
+      extraContent.classList.toggle("flex");
+
+      nav.classList.toggle("h-screen");
+      nav.classList.toggle("bg-black/75");
+      document.documentElement.classList.toggle("overflow-hidden");
+      document.body.classList.toggle("overflow-hidden");
+    };
+
+    menuButton.addEventListener("click", toggleMenu);
+    closeButton.addEventListener("click", toggleMenu);
+  }
+
+  function preventReloadOnCurrentPage() {
+    const links = document.querySelectorAll("a");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const currentPath = window.location.pathname;
+        const targetPath = link.getAttribute("href");
+
+        if (currentPath === targetPath) {
+          event.preventDefault();
+          console.log(
+            `You are already in ${currentPath}, the page does not reload.`
+          );
         }
-
-        const toggleMenu = () => {
-            menuButton.classList.toggle("hidden");
-            closeButton.classList.toggle("hidden");
-
-            menuMobileContent.classList.toggle("hidden");
-            menuMobileContent.classList.toggle("flex");
-
-            extraContent.classList.toggle("hidden");
-            extraContent.classList.toggle("flex");
-
-            nav.classList.toggle("h-screen");
-            nav.classList.toggle("bg-black/75");
-            document.body.classList.toggle("overflow-hidden");
-        };
-
-        menuButton.addEventListener("click", toggleMenu);
-        closeButton.addEventListener("click", toggleMenu);
-    }
-
-    function preventReloadOnCurrentPage() {
-        const links = document.querySelectorAll("a");
-
-        links.forEach((link) => {
-            link.addEventListener("click", (event) => {
-                const currentPath = window.location.pathname;
-                const targetPath = link.getAttribute("href");
-
-                if (currentPath === targetPath) {
-                    event.preventDefault();
-                    console.log(`You are already in ${currentPath}, the page does not reload.`);
-                }
-            });
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        initializeMenuToggle();
-        preventReloadOnCurrentPage();
+      });
     });
+  }
+
+  function initializeLanguageSelector() {
+    const languageSelector = document.querySelector("#languageSelector");
+    const languageDropdown = document.querySelector("#languageDropdown");
+    const languageArrow = document.querySelector("#languageArrow") as HTMLElement;
+
+    if (!languageSelector || !languageDropdown || !languageArrow) {
+      console.error("Language selector elements are missing");
+      return;
+    } 
+
+    const storedLang = localStorage.getItem('preferred-lang');
+    if (storedLang) {
+        const newPath = storedLang === "en" 
+            ? `/en${window.location.pathname.replace(/^\/en/, "")}` 
+            : window.location.pathname.replace(/^\/en/, "");
+        
+        if (window.location.pathname !== newPath) {
+            window.location.href = newPath;
+        }
+    }
+
+    languageSelector.addEventListener("click", (event) => {
+      event.stopPropagation();
+      languageDropdown.classList.toggle("hidden");
+      languageArrow.style.transform =
+        languageDropdown.classList.contains("hidden")
+          ? "rotate(0deg)"
+          : "rotate(180deg)";
+    });
+
+    document.addEventListener("click", () => {
+      languageDropdown.classList.add("hidden");
+      languageArrow.style.transform = "rotate(0deg)";
+    });
+
+    languageDropdown.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    const languageLinks = languageDropdown.querySelectorAll("a");
+    languageLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const href = link.getAttribute("href");
+            const newLang = href?.includes("/en") ? "en" : "es";
+            localStorage.setItem('preferred-lang', newLang);
+            
+            setTimeout(() => {
+                updateActiveLink();
+            }, 100);
+        });
+    });
+  }
+
+  function getCurrentPath() {
+    return window.location.pathname.replace(/\/$/, "");
+  }
+
+  function updateActiveLink() {
+    const links = document.querySelectorAll("#menuMobileContent a");
+    const currentPath = getCurrentPath();
+
+    links.forEach((link) => {
+      const href = link.getAttribute("href")?.replace(/\/$/, "");
+      if (currentPath === href) {
+        link.classList.add("text-primary", "border-b-[1px]");
+        link.classList.remove("text-white");
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.classList.remove("text-primary", "border-b-[1px]");
+        link.classList.add("text-white");
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeMenuToggle();
+    preventReloadOnCurrentPage();
+    initializeLanguageSelector();
+    updateActiveLink();
+
+    window.addEventListener("popstate", () => {
+      updateActiveLink();
+    });
+  });
 </script>

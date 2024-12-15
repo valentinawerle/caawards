@@ -1,0 +1,8 @@
+.line {
+  @apply block mx-auto mt-2 transition-all duration-300 h-[2px] w-0;
+}
+
+.listItem:hover .line,
+.lineActive {
+  @apply bg-white h-[0.5px] w-full;
+}

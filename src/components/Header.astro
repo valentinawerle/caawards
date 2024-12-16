@@ -33,13 +33,13 @@ const pages = [
 }));
 ---
 
-<nav class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 2xl:px-8 2xl:pt-8 2xl:pb-0 z-30" id="nav" aria-label="Main navigation">
-  <div class="flex flex-col md:flex-row">
-    <div class="flex pt-6 md:pt-0">
+<nav class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 2xl:px-8 2xl:pt-8 2xl:pb-0 z-30" id="nav" aria-label="Main navigation" transition:persist>
+  <div class="flex flex-col w-full md:w-auto md:flex-row md:gap-8">
+    <div class="flex pt-6 w-full justify-evenly md:justify-normal md:w-auto items-center md:pt-0">
       <a href={currentLang === "en" ? "/en" : "/"} aria-label="Home">
-        <LogoCaawards alt="logo-caawards" class:list={"w-[110px] h-auto mr-8"} />
+        <LogoCaawards transition:persist alt="logo-caawards" class:list={"w-[110px] h-auto"} />
       </a>
-      <button id="menuButton" class="md:hidden w-11 cursor-pointer" aria-label="Open menu">
+      <button id="menuButton" class="md:hidden cursor-pointer" aria-label="Open menu">
         <ListUp alt="list-icon" />
       </button>
       <button id="closeButton" class="md:hidden hidden w-12 cursor-pointer" aria-label="Close menu">
@@ -61,9 +61,9 @@ const pages = [
       }
     </ul>
   </div>
-  <div id="extraContent" class="hidden flex-row items-center pt-10 md:flex md:pt-0 md:flex-row navContent" >
+  <div transition:persist id="extraContent" class="hidden flex-row items-center pt-10 md:flex md:pt-0 md:flex-row navContent" >
     <div class="relative">
-      <button id="languageSelector" class="flex items-center" aria-label="Select language">
+      <button id="languageSelector" class="flex gap-3 items-center" aria-label="Select language">
         {
           currentLang === "es" ? (
             <ArgFlag alt="arg-flag" class:list={"w-6 h-6"} />
@@ -238,7 +238,8 @@ const pages = [
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  
+  document.addEventListener("astro:page-load", () => {
     initializeMenuToggle();
     preventReloadOnCurrentPage();
     initializeLanguageSelector();

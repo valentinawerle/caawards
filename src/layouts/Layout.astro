@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 
@@ -28,6 +30,7 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		<meta name="generator" content={Astro.generator} />
 		<ViewTransitions />
 		<title>{webTitle}</title>
+		<ViewTransitions />
 	</head>
 	<body>	
 		<div style=`background-image: url(${bgimage});` class="bg"></div>

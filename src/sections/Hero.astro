@@ -24,12 +24,12 @@ const translateLabels = useTranslations(
     </h2>
     <a 
       href={currentLang === "en" ? "/en/about" : "/about"} 
-      class="flex py-2 px-4 font-medium rounded bg-yellow-600 text-white gap-2 items-center transition-all duration-300 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20 group animate-zoom-in"
+      class="flex py-2 px-4 font-medium rounded bg-primary text-black gap-2 items-center transition-all duration-300 hover:contrast-125 hover:shadow-lg hover:shadow-lime-500 group animate-zoom-in"
     >
       <span>{translateLabels("hero.button")}</span>
       <UpArrow 
         strokeWidth="2" 
-        class:list={['w-3', 'transition-transform duration-300', 'group-hover:rotate-180' ]}
+        class:list={['fill-black', 'w-3', 'transition-transform duration-300', 'group-hover:rotate-180']}
       />
     </a>
   </section>

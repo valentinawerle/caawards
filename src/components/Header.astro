@@ -7,7 +7,6 @@ import LogoCaawards from "@/icons/LogoCaawards.astro";
 import UpArrow from "@/icons/UpArrow.astro";
 import { languageList } from "@/i18n/lang";
 import { useTranslations } from "@/i18n/utils";
-import style from './css/Header.module.css'
 
 const currentLang = Astro.currentLocale || "es";
 
@@ -50,11 +49,9 @@ const pages = [
     <ul id="menuMobileContent" class="hidden md:flex flex-col gap-10 items-center font-Inter text-2xl font-medium pt-6 md:flex-row md:pt-0 md:gap-8 lg:gap-14 md:text-lg md:font-extralight lg:text-lg xl:text-xl">
       {
         pages.map(({ name, href, active }) => (
-          <li
-          class:list={["hover-scale flex flex-col", style.listItem]}>
-            <a href={href} class:list={[{"text-white": !active }]} aria-current={active ? "page" : undefined}>
+        <li class="hover-scale">
+            <a href={href} class:list={[{"text-white": !active, "text-primary border-b-[1px]": active }]} aria-current={active ? "page" : undefined}>
               <span>{name}</span>
-              <div class:list={[{[style.lineActive]: active}, style.line]}/>
             </a>
           </li>
         ))
@@ -175,13 +172,13 @@ const pages = [
 
     const storedLang = localStorage.getItem('preferred-lang');
     if (storedLang) {
-        const newPath = storedLang === "en" 
-            ? `/en${window.location.pathname.replace(/^\/en/, "")}` 
-            : window.location.pathname.replace(/^\/en/, "");
+      const newPath = storedLang === "en" 
+        ? `/en${window.location.pathname.replace(/^\/en/, "")}` 
+        : window.location.pathname.replace(/^\/en/, "");
         
-        if (window.location.pathname !== newPath) {
-            window.location.href = newPath;
-        }
+      if (window.location.pathname !== newPath) {
+        window.location.href = newPath;
+      }
     }
 
     languageSelector.addEventListener("click", (event) => {
@@ -238,7 +235,6 @@ const pages = [
     });
   }
 
-  
   document.addEventListener("astro:page-load", () => {
     initializeMenuToggle();
     preventReloadOnCurrentPage();

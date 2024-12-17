@@ -53,7 +53,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 
     const animateCount = (el: HTMLSpanElement, target: number) => {
       let start = 0;
-      const duration = 500;
+      const duration = 1500;
       const increment = Math.ceil(target / (duration / 16));
 
       const updateCount = () => {

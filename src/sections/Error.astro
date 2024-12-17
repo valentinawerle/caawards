@@ -18,5 +18,18 @@ const translateLabels = useTranslations(
         <p class="md:w-96 w-80 text-center text-xl xl:text-2xl xl:w-[400px]">
             {translateLabels("error.description")} <span class="text-primary font-semibold">URL</span> {translateLabels("error.description2")}
         </p>
+        <p id="paragraphBoe" class="text-primary font-medium italic text-2xl cursor-pointer hover:scale-110 transition-transform duration-200 select-none">Bueeeeeeeee!</p>
+        <audio id="paragraphSound" src="/outroCoscu.mp3"></audio>
     </div>
 </section>
+
+<script>
+    const parrafo = document.getElementById("paragraphBoe") as HTMLParagraphElement || null;
+    const sonido = document.getElementById("paragraphSound") as HTMLAudioElement || null;
+
+    sonido.volume = 0.03;
+
+    parrafo.addEventListener("click", () => {
+        sonido.paused ? sonido.play() : sonido.pause();
+    });
+</script>

@@ -15,20 +15,23 @@ const translateLabels = useTranslations(
   <section class="flex flex-col justify-center items-center  text-center">
     <PicanteModelCanvas 
       client:load 
-      className="h-48 md:h-80 xl:h-64 2xl:h-[550px] w-full animate-fade-in animate-duration-slow animate-delay-1000"
+      className="h-48 md:h-80 xl:h-64 2xl:h-[550px] w-full animate-fade-in animate-duration-slow animate-delay-1000 cursor-pointer"
     /> 
-    <h1 class="font-Inter font-extrabold text-2xl md:max-w-none tracking-wide 2xl:text-5xl xl:text-4xl animate-slide-in-bottom animate-duration-slow">COSCU ARMY AWARDS</h1>
-    <h2 
-      class="font-Inter my-3 2xl:text-xl xl:text-base max-w-60 md:max-w-full animate-slide-in-bottom animate-duration-slow">
-      {translateLabels("hero.description")} <span class="text-sky-400">{translateLabels("hero.description2")}</span>
-    </h2>
+    <h1 class="font-Inter font-black w-96 text-2xl tracking-wide 2xl:text-5xl xl:text-4xl animate-slide-in-bottom animate-duration-slow">COSCU ARMY <span class="text-primary">AWARDS</span></h1>
+    <a href="https://kick.com/brunenger" target="_blank" rel="noopener noreferrer" class="hover:scale-95 transition-transform duration-300">
+      <h2 
+        class="font-Inter italic pb-6 text-sm max-w-60 md:max-w-full animate-slide-in-bottom animate-duration-slow">
+        KICK.COM/BRUNENGER
+      </h2>
+    </a>
     <a 
       href={currentLang === "en" ? "/en/about" : "/about"} 
-      class="flex py-2 px-4 font-medium rounded bg-yellow-600 text-white gap-2 items-center transition-all duration-300 hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-500/20 group animate-zoom-in"
+      class="flex py-2 px-4 font-medium rounded bg-[#35a900]  gap-2 items-center transition-all duration-300 hover:contrast-125 hover:shadow-lg hover:shadow-lime-500 group animate-zoom-in"
     >
       <span>{translateLabels("hero.button")}</span>
       <UpArrow 
-        strokeWidth="2" 
+        strokeWidth="2"
+        strokeFill="" 
         class:list={['w-3', 'transition-transform duration-300', 'group-hover:rotate-180' ]}
       />
     </a>

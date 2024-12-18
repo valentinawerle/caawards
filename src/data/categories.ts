@@ -1,0 +1,67 @@
+export const categories={
+    2024:[
+        'TILTEO DEL AÑO',
+        'DUPLA DEL AÑO',
+        'TRAYECTORIA',
+        'STREAMER LOL',
+        'STREAMER MUSICO',
+        'STREAM DESTACADO',
+        'EVENTO DEL AÑO',
+        'STREAMER DEL AÑO',
+        'STREAMER REVELACIÓN',
+        'STREAMER PROMESA',
+        'FAIL DEL AÑO',
+        'STREAMER IRL',
+        'CLIP DEL AÑO',
+        'TIMING DEL AÑO',
+        'STREAMER VALORANT',
+        'CLIP MAS DIVERTIDO',
+        'MUSICA EN STREAM',
+        'STREAMER FORTNITE',
+        'STREAMER CS2',
+        'SUSTO DEL AÑO',
+        'STREAMER VARIEDAD',
+        'YOUTUBER DEL AÑO',
+        'STREAMER DEPORTISTA',
+        'STREAMER MAS COMPROMETIDO',
+        'STREAMER MEJOR PRODUCCION'
+    ],
+
+    2023:[],
+
+    2022:[
+        'TILTEO DEL AÑO',
+        'DUPLA DEL AÑO',
+        'TRAYECTORIA',
+        'STREAMER LOL',
+        'STREAMER MUSICO',
+        'STREAM DESTACADO',
+        'EVENTO DEL AÑO',
+        'STREAMER DEL AÑO',
+        'STREAMER REVELACIÓN',
+        'STREAMER PROMESA',
+        'FAIL DEL AÑO',
+        'STREAMER IRL',
+        'CLIP DEL AÑO',
+        'TIMING DEL AÑO',
+        'STREAMER VALORANT',
+        'CLIP MAS DIVERTIDO',
+        'MUSICA EN STREAM',
+        'STREAMER FORTNITE',
+        'STREAMER CS2',
+        'SUSTO DEL AÑO',
+        'STREAMER VARIEDAD',
+        'YOUTUBER DEL AÑO',
+        'STREAMER DEPORTISTA',
+        'STREAMER MAS COMPROMETIDO',
+        'STREAMER MEJOR PRODUCCION'
+    ],
+
+    2021:[],
+    2020:[],
+    2019:[],
+    2018:[],
+
+}
+
+

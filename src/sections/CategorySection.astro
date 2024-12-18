@@ -1,0 +1,20 @@
+---
+import { categories } from "@/data/categories"
+---
+
+<section class="flex flex-col flex-1 justify-center items-center mx-20">
+
+    <h2 class="font-bold text-center font-Inter my-12 text-4xl text-primary">TERNAS 2024</h2>
+
+    <div class="grid grid-cols-5 gap-11 font-bold font-Inter text-2xl">
+        {
+            categories[2024].map((category) => (
+                <p class="transition-transform duration-300 ease-in-out hover:scale-105">{category}</p>
+            ))
+ 
+        }
+
+    </div>
+
+    
+</section>

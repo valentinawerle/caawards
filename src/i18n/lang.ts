@@ -24,9 +24,7 @@ export const labels = {
         "error.description": "¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección",
         "error.description2": "sea correcta.",
         // SPICIES
-        "spicies.title": "Picantes",
-        "spicies.streamerOfTheYear": "Streamer del año",
-        "spicies.revelation": "Streamer Revelación",
+        "spicies.mondalSubtitle": "SELECCIONA LA TERNA",
         // FOOTER
         "footer.copyright": "Derechos de autor",
 
@@ -51,9 +49,7 @@ export const labels = {
         "error.description": "Hi! We're sorry, but we couldn't find what you were looking for. Please verify that the",
         "error.description2": "is correct.",
         // SPICIES
-        "spicies.title": "Picantes",
-        "spicies.streamerOfTheYear": "Streamer of the year",
-        "spicies.revelation": "Streamer Revelation",
+        "spicies.mondalSubtitle": "SELECT CATEGORY",
         // FOOTER
         "footer.copyright": "All rights reserved",
     },

@@ -1,20 +1,33 @@
 ---
-import { categories } from "@/data/categories"
+import { categories } from "@/data/categories";
 ---
 
-<section class="flex flex-col flex-1 justify-center items-center mx-20">
+<section class="flex flex-col min-h-[calc(100vh-16rem)] justify-center items-center">
+  <div class="container mx-auto px-4 py-4">
+    <h2
+      class="text-3xl font-bold text-center text-green-300 uppercase mb-8 tracking-tight"
+    >
+      Ternas 2024
+    </h2>
 
-    <h2 class="font-bold text-center font-Inter my-12 text-4xl text-primary">TERNAS 2024</h2>
-
-    <div class="grid grid-cols-5 gap-11 font-bold font-Inter text-2xl">
-        {
-            categories[2024].map((category) => (
-                <p class="transition-transform duration-300 ease-in-out hover:scale-105">{category}</p>
-            ))
- 
-        }
-
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-4"
+    >
+      {
+        categories[2024].map((terna, index) => (
+          <div
+            class={`bg-white/10 backdrop-blur-lg border border-white/10 rounded-lg p-4 shadow-sm hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center ${
+              index === categories[2024].length - 1
+                ? "col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-1 xl:col-span-1 h-12 sm:h-12 md:h-16 lg:h-12"
+                : "h-12 sm:h-12 md:h-16 lg:h-12"
+            }`}
+          >
+            <p class="text-center text-sm font-medium tracking-tight uppercase text-gray-200">
+              {terna}
+            </p>
+          </div>
+        ))
+      }
     </div>
-
-    
+  </div>
 </section>

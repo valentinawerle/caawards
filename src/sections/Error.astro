@@ -1,13 +1,8 @@
 ---
 import LogoCaawards from '@/icons/LogoCaawards.astro';
-import { useTranslations } from "@/i18n/utils";
-import { languageList } from "@/i18n/lang";
+import { getTranslateLabels } from "../i18n/utils";
 
-const currentLang = Astro.currentLocale || "es";
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
 ---
 
 <section class="flex items-center md:justify-evenly justify-evenly flex-col-reverse xl:flex-row flex-1">

@@ -1,14 +1,10 @@
 ---
 import UpArrow from "@/icons/UpArrow.astro";
 import { PicanteModelCanvas } from "@/components/3D-Model/PicanteModelCanvas";
-import { useTranslations } from "@/i18n/utils";
-import { languageList } from "@/i18n/lang";
+import { getTranslateLabels, getCurrentLangPath } from "../i18n/utils";
 
-const currentLang = Astro.currentLocale || "es";
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
+const currentLangPath = getCurrentLangPath(Astro.currentLocale || "es");
 ---
 
 <main class="flex-1 flex justify-center items-center">
@@ -25,7 +21,7 @@ const translateLabels = useTranslations(
       </h2>
     </a>
     <a 
-      href={currentLang === "en" ? "/en/about" : "/about"} 
+      href={`${currentLangPath}about`} 
       class="flex py-2 px-4 font-medium rounded bg-[#35a900]  gap-2 items-center transition-all duration-300 hover:contrast-125 hover:shadow-lg hover:shadow-lime-500 group animate-zoom-in"
     >
       <span>{translateLabels("hero.button")}</span>

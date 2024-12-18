@@ -6,13 +6,11 @@ import ListUp from "@/icons/ListUp.astro";
 import LogoCaawards from "@/icons/LogoCaawards.astro";
 import UpArrow from "@/icons/UpArrow.astro";
 import { languageList } from "@/i18n/lang";
-import { useTranslations } from "@/i18n/utils";
+import { getTranslateLabels, getCurrentLangPath, currentLang, isDefaultLocale } from "../i18n/utils";
 
-const currentLang = Astro.currentLocale || "es";
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const currentLocale = Astro.currentLocale || "es";
+const translateLabels = getTranslateLabels(currentLocale);
+const currentLangPath = getCurrentLangPath(currentLocale);
 
 const { pathname } = Astro.url;
 const normalizedPathName =
@@ -21,21 +19,21 @@ const normalizedPathName =
     : pathname;
 
 const pages = [
-  { name: `${translateLabels("header.about")}`, href: "/about" },
-  { name: `${translateLabels("header.spicies")}`, href: "/spicies" },
-  { name: `${translateLabels("header.categories")}`, href: "/categories" },
-  { name: `${translateLabels("header.sponsors")}`, href: "/sponsors" },
+  { name: `${translateLabels("header.about")}`, href: "about" },
+  { name: `${translateLabels("header.spicies")}`, href: "spicies" },
+  { name: `${translateLabels("header.categories")}`, href: "categories" },
+  { name: `${translateLabels("header.sponsors")}`, href: "sponsors" },
 ].map((page) => ({
   ...page,
-  href: `${currentLang === "en" ? "/en" : ""}${page.href}`,
-  active: normalizedPathName === `${currentLang === "en" ? "/en" : ""}${page.href}`,
+  href: `${currentLangPath}${page.href}`,
+  active: normalizedPathName === `${currentLangPath}${page.href}`,
 }));
 ---
 
 <nav class="flex flex-col items-center relative w-full md:flex-row md:justify-between md:h-auto md:p-6 xl:p-8 2xl:px-8 2xl:pt-8 2xl:pb-0 z-30" id="nav" aria-label="Main navigation" transition:persist>
   <div class="flex flex-col w-full md:w-auto md:flex-row md:gap-8">
     <div class="flex pt-6 w-full justify-evenly md:justify-normal md:w-auto items-center md:pt-0">
-      <a href={currentLang === "en" ? "/en" : "/"} aria-label="Home">
+      <a href={currentLangPath} aria-label="Home">
         <LogoCaawards transition:persist alt="logo-caawards" class:list={"w-[110px] h-auto"} />
       </a>
       <button id="menuButton" class="md:hidden cursor-pointer" aria-label="Open menu">
@@ -62,7 +60,7 @@ const pages = [
     <div class="relative">
       <button id="languageSelector" class="flex gap-3 items-center" aria-label="Select language">
         {
-          currentLang === "es" ? (
+          isDefaultLocale(currentLocale) ? (
             <ArgFlag alt="arg-flag" class:list={"w-6 h-6"} />
           ) : (
             <UsaFlag alt="usa-flag" class:list={"w-6 h-6"} />
@@ -81,8 +79,8 @@ const pages = [
         
             return (
               <li {...{ key }} class="flex items-center">
-                <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`}>
-                  {key === "es" ? ( 
+                <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang(currentLocale) ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`}>
+                  {isDefaultLocale(key) ? ( 
                     <div class="flex items-center gap-2">
                       <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />
                       <span>ES</span>

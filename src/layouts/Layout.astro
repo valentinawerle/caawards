@@ -1,6 +1,7 @@
 ---
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
+import OpenGraph from '@/components/OpenGraph.astro';
 
 import { ViewTransitions } from 'astro:transitions' 
 
@@ -10,8 +11,6 @@ interface Props {
 }
 
 const { title, bgimage } = Astro.props;
-
-const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 ---
 
 <!doctype html>
@@ -20,13 +19,12 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
-		<meta name="description" content="Descubre los Coscu Army Awards, la premiación más grande de streamers y creadores de contenido en Latinoamérica. Reconoce el talento de las figuras más destacadas del mundo digital.">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<ViewTransitions />
-		<title>{webTitle}</title>
+		<OpenGraph title={title} />
 	</head>
 	<body>	
 		<div

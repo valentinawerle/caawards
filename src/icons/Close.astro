@@ -7,6 +7,6 @@
     class:list={Astro.props.class}
     id={Astro.props.id}
 >
-<path d="M42.4997 17.6042L17.5 42.604" stroke="white" stroke-width="4" stroke-linecap="round"/>
-<path d="M17.5001 17.6042L42.5 42.604" stroke="white" stroke-width="4" stroke-linecap="round"/>
+<path d="M42.4997 17.6042L17.5 42.604" stroke={Astro.props.strokeFill || "white"}  stroke-width="4" stroke-linecap="round"/>
+<path d="M17.5001 17.6042L42.5 42.604" stroke={Astro.props.strokeFill || "white"}  stroke-width="4" stroke-linecap="round"/>
 </svg>

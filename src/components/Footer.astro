@@ -2,14 +2,9 @@
 import GithubIcon from "@/icons/footer/GithubIcon.astro";
 import InstagramIcon from "@/icons/footer/InstagramIcon.astro";
 import TwitterIcon from "@/icons/footer/TwitterIcon.astro";
-import { useTranslations } from "@/i18n/utils";
-import { languageList } from "@/i18n/lang";
+import { getTranslateLabels } from "../lib/lang-utils";
 
-const currentLang = Astro.currentLocale || "es";
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const translateLabels = getTranslateLabels(Astro.currentLocale);
 
 const icons = [
     { Image: GithubIcon, href: "https://github.com/BanKinf/caawards", alt:"github-icon" },

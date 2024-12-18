@@ -1,8 +1,7 @@
 ---
 //Modules
 import { allCategories } from "@/data/categories"
-import { useTranslations } from "@/i18n/utils";
-import { languageList } from "@/i18n/lang";
+import { getTranslateLabels } from "../i18n/utils";
 
 //Icons
 import Close from "@/icons/Close.astro"
@@ -11,10 +10,7 @@ import SearchIcon from "@/icons/SearchIcon.astro"
 
 const urlSpicies = Astro.url.href;
 const currentLang = Astro.currentLocale || "es";
-
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
+const translateLabels = getTranslateLabels(currentLang);
 ---
 
 <section class="flex flex-1 flex-col items-center justify-center my-20 md:my-0">

@@ -2,8 +2,8 @@
 import { aboutParagraphs } from "@/data/about.ts";
 import { getTranslateLabels, currentLang } from "../i18n/utils";
 
-const translateLabels = getTranslateLabels(Astro.currentLocale);
-const paragraphs = aboutParagraphs[currentLang(Astro.currentLocale) as keyof typeof aboutParagraphs];
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
+const paragraphs = aboutParagraphs[currentLang(Astro.currentLocale || "es") as keyof typeof aboutParagraphs];
 
 ---
 

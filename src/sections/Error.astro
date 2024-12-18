@@ -2,7 +2,7 @@
 import LogoCaawards from '@/icons/LogoCaawards.astro';
 import { getTranslateLabels } from "../i18n/utils";
 
-const translateLabels = getTranslateLabels(Astro.currentLocale);
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
 ---
 
 <section class="flex items-center md:justify-evenly justify-evenly flex-col-reverse xl:flex-row flex-1">

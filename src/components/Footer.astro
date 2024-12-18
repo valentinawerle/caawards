@@ -4,7 +4,7 @@ import InstagramIcon from "@/icons/footer/InstagramIcon.astro";
 import TwitterIcon from "@/icons/footer/TwitterIcon.astro";
 import { getTranslateLabels } from "../i18n/utils";
 
-const translateLabels = getTranslateLabels(Astro.currentLocale);
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
 
 const icons = [
     { Image: GithubIcon, href: "https://github.com/BanKinf/caawards", alt:"github-icon" },

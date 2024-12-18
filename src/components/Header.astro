@@ -8,8 +8,9 @@ import UpArrow from "@/icons/UpArrow.astro";
 import { languageList } from "@/i18n/lang";
 import { getTranslateLabels, getCurrentLangPath, currentLang, isDefaultLocale } from "../i18n/utils";
 
-const translateLabels = getTranslateLabels(Astro.currentLocale);
-const currentLangPath = getCurrentLangPath(Astro.currentLocale);
+const currentLocale = Astro.currentLocale || "es";
+const translateLabels = getTranslateLabels(currentLocale);
+const currentLangPath = getCurrentLangPath(currentLocale);
 
 const { pathname } = Astro.url;
 const normalizedPathName =
@@ -59,7 +60,7 @@ const pages = [
     <div class="relative">
       <button id="languageSelector" class="flex gap-3 items-center" aria-label="Select language">
         {
-          isDefaultLocale(Astro.currentLocale) ? (
+          isDefaultLocale(currentLocale) ? (
             <ArgFlag alt="arg-flag" class:list={"w-6 h-6"} />
           ) : (
             <UsaFlag alt="usa-flag" class:list={"w-6 h-6"} />
@@ -78,7 +79,7 @@ const pages = [
         
             return (
               <li {...{ key }} class="flex items-center">
-                <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang(Astro.currentLocale) ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`}>
+                <a href={newPath} class={`flex items-center px-4 py-2 text-sm ${ key === currentLang(currentLocale) ? "bg-white/20 text-white" : "text-gray-700" } hover:bg-gray-100 w-full`}>
                   {isDefaultLocale(key) ? ( 
                     <div class="flex items-center gap-2">
                       <ArgFlag alt="arg-flag" class:list={"w-5 h-5 mr-2"} />

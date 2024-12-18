@@ -3,8 +3,8 @@ import UpArrow from "@/icons/UpArrow.astro";
 import { PicanteModelCanvas } from "@/components/3D-Model/PicanteModelCanvas";
 import { getTranslateLabels, getCurrentLangPath } from "../i18n/utils";
 
-const translateLabels = getTranslateLabels(Astro.currentLocale);
-const currentLangPath = getCurrentLangPath(Astro.currentLocale);
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
+const currentLangPath = getCurrentLangPath(Astro.currentLocale || "es");
 ---
 
 <main class="flex-1 flex justify-center items-center">

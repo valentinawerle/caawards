@@ -20,16 +20,16 @@ export function useTranslations(lang: Lang) {
   };
 }
 
-export const currentLang = (currentLocale: string) =>
+export const currentLang = (currentLocale: string | undefined) =>
   currentLocale || DEFAULT_LOCALE;
 
-export const getCurrentLangPath = (currentLocale: string) =>
+export const getCurrentLangPath = (currentLocale: string | undefined) =>
   currentLocale !== DEFAULT_LOCALE ? "/en/" : "/";
 
-export const isDefaultLocale = (currentLocale: string) =>
+export const isDefaultLocale = (currentLocale: string | undefined) =>
   currentLocale === DEFAULT_LOCALE;
 
-export const getTranslateLabels = (currentLocale: string) => {
+export const getTranslateLabels = (currentLocale: string | undefined) => {
   return useTranslations(
     currentLang(currentLocale) as keyof typeof languageList
   );

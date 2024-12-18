@@ -1,32 +1,148 @@
----
-import { awards } from "@/data/spicies.ts";
-import { useTranslations } from "@/i18n/utils";
-import { languageList } from "@/i18n/lang";
-const currentLang = Astro.currentLocale || "es";
-const translateLabels = useTranslations(
-  currentLang as keyof typeof languageList
-);
----
-<section class="flex flex-1 justify-center 2xl:mt-28 md:my-0 my-10" >
-  <div class="grid text-center grid-cols-1 md:grid-cols-3 gap-16">
-    {awards.map((award) => (
-      <div class="space-y-4">
-        <h2 class="2xl:text-6xl text-4xl font-light">{award.year}</h2>
-        <div class="space-y-2">
-          <div>
-            <h3 class="2xl:text-xl md:text-lg text-gray-400">{translateLabels("spicies.streamerOfTheYear")}</h3>
-            <p class="2xl:text-xl md:text-base">
-              {award.streamerOfTheYear.alias} - {award.streamerOfTheYear.name}
-            </p>
-          </div>
-          <div>
-            <h3 class="2xl:text-xl md:text-lg text-gray-400">{translateLabels("spicies.revelation")}</h3>
-            <p class="2xl:text-xl md:text-base">
-              {award.revelation.alias} - {award.revelation.name}
-            </p>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
+<section class="flex flex-1 flex-col items-center justify-center my-20 md:my-0">
+  <h2 id="category-title" class="font-bold text-center font-Inter mb-16 text-5xl text-primary uppercase">
+    Streamers del año
+  </h2>
+  <ol class="flex flex-col md:flex-row items-center justify-center relative w-full">
+    <div class="line bg-primary"></div>
+  </ol>
 </section>
+
+<style>
+  .line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    z-index: 0;
+    display: none;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+  }
+
+  ol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    position: relative;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+</style>
+
+<script>
+  import { picantes, type PicanteCategory } from "@/data/spicies";
+  import { allCategories } from "@/data/categories";
+
+  const getQueryParam = (param: string): string | null => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  };
+
+  const detectLanguageFromPath = () => {
+    const path = window.location.pathname;
+    const segments = path.split("/").filter(Boolean);
+    const lang = segments[0];
+    return lang === "es" || lang === "en" ? lang : "es";
+  };
+
+  const renderData = () => {
+    const lang = detectLanguageFromPath();
+    const category = getQueryParam("category") as PicanteCategory || 'streamers-of-the-year';
+
+    const categoryData = allCategories.find(cat => cat.id === category);
+    const categoryTitle = lang === "es" ? categoryData?.title : categoryData?.enTitle;
+
+    const titleElement = document.getElementById("category-title");
+    if (titleElement && categoryTitle) {
+      titleElement.textContent = categoryTitle;
+    }
+
+    if (!(category in picantes)) {
+      console.error(`Categoría no válida: ${category}`);
+      return;
+    }
+
+    const container = document.querySelector("ol");
+    if (!container) return;
+
+    const listItems = container.querySelectorAll("li");
+    listItems.forEach(item => item.remove());
+
+    picantes[category].forEach((picante) => {
+      const listItem = document.createElement("li");
+      listItem.className = "flex flex-row md:flex-col items-center relative";
+
+      listItem.innerHTML = `
+        <a href="${picante.channel}" target="_blank" rel="noopener noreferrer">
+          <img 
+            src="${picante.image}" 
+            alt="image" 
+            class="rounded-full w-20 h-20 aspect-square object-cover mb-4 hover:scale-110 hover:grayscale-0 transition-all duration-300 grayscale"
+          />
+        </a>
+        <div class="dot w-3 h-3 bg-primary rounded-full"></div> <!-- Punto -->
+        <div class="flex flex-col items-center mt-4">
+          <h3 class="font-bold font-Inter text-2xl">${picante.year}</h3>
+          <h4 class="font-normal text-2xl font-Inter text-primary">${picante.nickname}</h4>
+          <h5 class="font-extralight font-Inter">${picante.name}</h5>
+        </div>
+      `;
+
+      container.appendChild(listItem);
+    });
+
+    setTimeout(adjustLinePosition, 100);
+  };
+
+  const adjustLinePosition = () => {
+    const items = document.querySelectorAll("ol > li");
+    const line = document.querySelector(".line") as HTMLElement;
+
+    if (!line || items.length < 2) {
+      if (line) line.style.display = "none";
+      return;
+    }
+
+    const container = document.querySelector("ol");
+    if (!container) return;
+
+    const containerRect = container.getBoundingClientRect();
+
+    const dots = [...items].map(item => item.querySelector(".dot"));
+    if (!dots.length || dots.some(dot => dot === null)) return;
+
+    const firstDotRect = (dots[0] as HTMLElement).getBoundingClientRect();
+    const lastDotRect = (dots[dots.length - 1] as HTMLElement).getBoundingClientRect();
+
+    const startX = firstDotRect.left - containerRect.left + firstDotRect.width / 2;
+    const endX = lastDotRect.left - containerRect.left + lastDotRect.width / 2;
+
+    const lineWidth = endX - startX;
+
+    const topPosition = firstDotRect.top - containerRect.top + firstDotRect.height / 2;
+
+    line.style.left = `${startX}px`;
+    line.style.width = `${lineWidth}px`;
+    line.style.top = `${topPosition}px`;
+    line.style.display = "block";
+  };
+
+  document.addEventListener("astro:page-load", renderData);
+  window.addEventListener("resize", adjustLinePosition);
+</script>

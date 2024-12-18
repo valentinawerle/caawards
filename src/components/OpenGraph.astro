@@ -1,0 +1,27 @@
+---
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+
+const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
+---
+
+<title>{webTitle}</title>
+<meta name="description" content="Descubre los Coscu Army Awards, la premiación más grande de streamers y creadores de contenido en Latinoamérica. Reconoce el talento de las figuras más destacadas del mundo digital.">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://coscuarmy-awards.vercel.app">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coscu Army Awards">
+<meta property="og:description" content="Descubre los Coscu Army Awards, la premiación más grande de streamers y creadores de contenido en Latinoamérica. Reconoce el talento de las figuras más destacadas del mundo digital.">
+<meta property="og:image" content="/og-bg.webp">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="coscuarmy-awards.vercel.app">
+<meta property="twitter:url" content="https://coscuarmy-awards.vercel.app">
+<meta name="twitter:title" content="Coscu Army Awards">
+<meta name="twitter:description" content="Descubre los Coscu Army Awards, la premiación más grande de streamers y creadores de contenido en Latinoamérica. Reconoce el talento de las figuras más destacadas del mundo digital.">
+<meta name="twitter:image" content="/og-bg.webp">

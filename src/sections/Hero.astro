@@ -1,7 +1,7 @@
 ---
 import UpArrow from "@/icons/UpArrow.astro";
 import { PicanteModelCanvas } from "@/components/3D-Model/PicanteModelCanvas";
-import { getTranslateLabels, getCurrentLangPath } from "../lib/lang-utils";
+import { getTranslateLabels, getCurrentLangPath } from "../i18n/utils";
 
 const translateLabels = getTranslateLabels(Astro.currentLocale);
 const currentLangPath = getCurrentLangPath(Astro.currentLocale);

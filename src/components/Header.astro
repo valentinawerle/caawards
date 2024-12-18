@@ -6,7 +6,7 @@ import ListUp from "@/icons/ListUp.astro";
 import LogoCaawards from "@/icons/LogoCaawards.astro";
 import UpArrow from "@/icons/UpArrow.astro";
 import { languageList } from "@/i18n/lang";
-import { getTranslateLabels, getCurrentLangPath, currentLang, isDefaultLocale } from "../lib/lang-utils";
+import { getTranslateLabels, getCurrentLangPath, currentLang, isDefaultLocale } from "../i18n/utils";
 
 const translateLabels = getTranslateLabels(Astro.currentLocale);
 const currentLangPath = getCurrentLangPath(Astro.currentLocale);

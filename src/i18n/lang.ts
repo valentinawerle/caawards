@@ -8,8 +8,8 @@ export const labels = {
         // HEADER
         "header.about": "Acerca de",
         "header.spicies": "Picantes",
-        "header.categories": "Ternas 2023",
-        "header.sponsors": "Sponsors 2023",
+        "header.categories": "Ternas 2024",
+        "header.sponsors": "Sponsors 2024",
         // HERO
         "hero.button": "Saber más",
         "hero.description": "Premios a la comunidad de streamers de",
@@ -35,8 +35,8 @@ export const labels = {
         // HEADER
         "header.about": "About Us",
         "header.spicies": "Spicies",
-        "header.categories": "Categories 2023",
-        "header.sponsors": "Sponsors 2023",
+        "header.categories": "Categories 2024",
+        "header.sponsors": "Sponsors 2024",
         // HERO
         "hero.button": "Learn more",
         "hero.description": "Awards to the community of streamers of",

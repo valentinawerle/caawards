@@ -8,8 +8,8 @@ export const labels = {
         // HEADER
         "header.about": "Acerca de",
         "header.spicies": "Picantes",
-        "header.categories": "Ternas 2023",
-        "header.sponsors": "Sponsors 2023",
+        "header.categories": "Ternas",
+        "header.sponsors": "Sponsors 2024",
         // HERO
         "hero.button": "Saber más",
         "hero.description": "Premios a la comunidad de streamers de",
@@ -27,14 +27,15 @@ export const labels = {
         "spicies.mondalSubtitle": "SELECCIONA LA TERNA",
         // FOOTER
         "footer.copyright": "Derechos de autor",
-
+        //SPONSORS
+        "sponsors.title": "NOS ACOMPAÑAN EN ESTE EVENTO..."
     },
     en: {
         // HEADER
         "header.about": "About Us",
         "header.spicies": "Spicies",
-        "header.categories": "Categories 2023",
-        "header.sponsors": "Sponsors 2023",
+        "header.categories": "Categories",
+        "header.sponsors": "Sponsors 2024",
         // HERO
         "hero.button": "Learn more",
         "hero.description": "Awards to the community of streamers of",
@@ -52,5 +53,7 @@ export const labels = {
         "spicies.mondalSubtitle": "SELECT CATEGORY",
         // FOOTER
         "footer.copyright": "All rights reserved",
+        //SPONSORS
+        "sponsors.title": "THEY JOIN US IN THIS EVENT..."
     },
 }

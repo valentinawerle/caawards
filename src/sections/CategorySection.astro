@@ -1,0 +1,33 @@
+---
+import { categories } from "@/data/categoriesByYear";
+---
+
+<section class="flex flex-col min-h-[calc(100vh-16rem)] justify-center items-center">
+  <div class="container mx-auto px-4 py-4">
+    <h2
+      class="text-3xl font-bold text-center text-primary uppercase mb-8 tracking-tight"
+    >
+      Ternas 2024
+    </h2>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-4"
+    >
+      {
+        categories[2024].map((terna, index) => (
+          <div
+            class={`bg-white/10 backdrop-blur-lg border border-white/10 rounded-lg p-4 shadow-sm hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center ${
+              index === categories[2024].length - 1
+                ? "col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-1 xl:col-span-1 h-12 sm:h-12 md:h-16 lg:h-12"
+                : "h-12 sm:h-12 md:h-16 lg:h-12"
+            }`}
+          >
+            <p class="text-center text-sm font-medium tracking-tight uppercase text-gray-200">
+              {terna}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -20,6 +20,9 @@ export default {
 				'.hover-scale': {
 					'@apply hover:scale-110 transition-transform duration-200': {},
 				},
+				'.sponsors-class': {
+					'@apply w-56 h-auto md:w-96 transition-transform hover:scale-110 duration-200': {},
+				}
 			});
 		},
 	],

@@ -1,0 +1,17 @@
+---
+import Kick from '@/icons/Sponsors/Kick.astro'
+import Stake from '@/icons/Sponsors/Stake.astro'
+import Speed from '@/icons/Sponsors/Speed.astro'
+import { getTranslateLabels } from '@/i18n/utils';
+
+const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
+---
+
+<section class="flex flex-1 flex-col items-center justify-center">
+    <h2 class="font-bold text-center font-Inter mb-20 text-primary text-2xl md:text-5xl">{translateLabels("sponsors.title")}.</h2>
+    <div class="flex md:flex-row flex-col gap-20 ">
+        <Kick alt="Kick" class:list={'sponsors-class'}/>
+        <Stake alt="Stake" class:list={'sponsors-class'} />
+        <Speed alt="Speed" class:list={'sponsors-class'} />
+    </div>
+</section>

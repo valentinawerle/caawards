@@ -199,7 +199,7 @@ const pages = [
 
     const languageLinks = languageDropdown.querySelectorAll("a");
     languageLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
+        link.addEventListener("click", () => {
             const href = link.getAttribute("href");
             const newLang = href?.includes("/en") ? "en" : "es";
             localStorage.setItem('preferred-lang', newLang);

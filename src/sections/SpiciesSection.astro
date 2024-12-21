@@ -18,7 +18,7 @@ const publicDomain = import.meta.env.PUBLIC_DOMAIN;
 
   <!-- SECTION -->
   <div class="flex gap-3">
-    <h2 id="category-title" class="font-bold text-center font-Inter mb-16 text-3xl uppercase">
+    <h2 id="category-title" class="font-bold text-center font-Inter mb-16 text-2xl md:text-3xl uppercase">
       Streamers del año
     </h2>
     <SearchIcon 
@@ -27,8 +27,8 @@ const publicDomain = import.meta.env.PUBLIC_DOMAIN;
       class:list={'w-7 cursor-pointer hover:scale-110 transition-transform duration-200'} 
     />
   </div>
-  <ol class="flex flex-col md:flex-row items-center justify-center relative w-full">
-    <div class="line bg-primary"></div>
+  <ol class="flex flex-col md:flex-row items-center justify-center relative content-center">
+    <div class="line bg-primary hidden md:block"></div>
   </ol>
 
   <!-- MODAL -->
@@ -166,11 +166,11 @@ const publicDomain = import.meta.env.PUBLIC_DOMAIN;
           <img 
             src="${picante.image}" 
             alt="image" 
-            class="rounded-full w-20 h-20 aspect-square object-cover mb-4 hover:scale-110 hover:grayscale-0 transition-all duration-300 grayscale"
+            class="rounded-full w-20 h-20 aspect-square object-cover mb-4 hover:scale-110 hover:grayscale-0 transition-all duration-300 grayscale mr-5 md:mr-0"
           />
         </a>
-        <div class="dot w-3 h-3 bg-primary rounded-full"></div>
-        <div class="flex flex-col items-center mt-4">
+        <div class="dot w-3 h-3 bg-primary rounded-full hidden md:block"></div>
+        <div class="flex flex-col md:items-center mt-4">
           <h3 class="font-bold font-Inter text-2xl">${picante.year}</h3>
           <h4 class="font-normal text-2xl font-Inter text-primary">${picante.nickname}</h4>
           <h5 class="font-extralight font-Inter">${picante.name}</h5>

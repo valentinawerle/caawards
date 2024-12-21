@@ -11,7 +11,7 @@ import { categories } from "@/data/categoriesByYear";
     </h2>
 
     <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-4"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-4 2xl:gap-10"
     >
       {
         categories[2024].map((terna, index) => (
@@ -19,7 +19,7 @@ import { categories } from "@/data/categoriesByYear";
             class={`bg-white/10 backdrop-blur-lg border border-white/10 rounded-lg p-4 shadow-sm hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center ${
               index === categories[2024].length - 1
                 ? "col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-1 xl:col-span-1 h-12 sm:h-12 md:h-16 lg:h-12"
-                : "h-12 sm:h-12 md:h-16 lg:h-12"
+                : "h-12 sm:h-12 md:h-16 lg:h-12 2xl:h-16"
             }`}
           >
             <p class="text-center text-sm font-medium tracking-tight uppercase text-gray-200">

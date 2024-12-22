@@ -13,7 +13,7 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -25,8 +25,11 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 		<meta name="generator" content={Astro.generator} />
 		<title>{webTitle}</title>
 	</head>
-	<body>	
-		<div style=`background-image: url(${bgimage});` class="bg"></div>
+	<body class=" [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-800
+  [&::-webkit-scrollbar-thumb]:bg-gray-700">	
+		<div
+		style={`background-image: url('${bgimage}'); background-attachment: fixed;`}
+		class="bg start-0" />
 		<div class="flex flex-col min-h-screen relative">
 			<Header />
 				<slot />
@@ -37,7 +40,7 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 
 <style is:global>
 	.bg {
-		position:absolute;
+		position: fixed;
 		width: 100vw;
 		height: 100vh;
   		background-size: cover;
@@ -57,7 +60,6 @@ const webTitle =  title ? `Coscu Army Awards - ${title}` : "Coscu Army Awards"
 
 	@media (min-width: 600px) {
 		html,body {
-			overflow: hidden;
 		}
 	}
 </style>

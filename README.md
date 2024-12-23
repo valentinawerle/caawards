@@ -25,5 +25,6 @@ Site Original - https://caawards.com.ar/
 
 - @Dantito : Por crear el 3D Model del picante.
 - @WiruWiru : Por implementar ThreeJs y hacer la Internacionalización(i18n)
+- @Banking : Por encargarse de toda la estructura del proyecto, el repositorio, y tomarse el tiempo de explicar lo necesario para que todos puedan hacer aportes en el codigo.
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>

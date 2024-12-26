@@ -14,7 +14,7 @@ const currentLangPath = getCurrentLangPath(Astro.currentLocale || "es");
       className="h-48 md:h-80 xl:h-64 2xl:h-[550px] w-full animate-fade-in animate-duration-slow animate-delay-1000 cursor-pointer"
     /> 
     <h1 class="font-Inter font-black w-96 text-2xl tracking-wide 2xl:text-5xl xl:text-4xl animate-slide-in-bottom animate-duration-slow">COSCU ARMY <span class="text-primary">AWARDS</span></h1>
-    <a href="https://kick.com/brunenger" target="_blank" rel="noopener noreferrer" class="hover:scale-95 transition-transform duration-300">
+    <a href="https://kick.com/brunenger" target="_blank" rel="noopener noreferrer" class="hover:scale-95 transition-transform hover:underline underline-offset-4 duration-500">
       <h2 
         class="font-Inter italic pb-6 text-sm max-w-60 md:max-w-full animate-slide-in-bottom animate-duration-slow">
         KICK.COM/BRUNENGER
@@ -22,13 +22,13 @@ const currentLangPath = getCurrentLangPath(Astro.currentLocale || "es");
     </a>
     <a 
       href={`${currentLangPath}about`} 
-      class="flex py-2 px-4 font-medium rounded bg-[#35a900]  gap-2 items-center transition-all duration-300 hover:contrast-125 hover:shadow-lg hover:shadow-lime-500 group animate-zoom-in"
+      class="flex py-2 px-4 font-extrabold text-lgmd rounded bg-[#64e728] text-[#19360b] gap-2 items-center transition-all duration-300 hover:contrast-125 hover:shadow-lg hover:shadow-lime-500 group animate-zoom-in"
     >
       <span>{translateLabels("hero.button")}</span>
       <UpArrow 
         strokeWidth="2"
-        strokeFill="" 
-        class:list={['w-3', 'transition-transform duration-300', 'group-hover:rotate-180' ]}
+        strokeFill="#19360b" 
+        class:list={['w-4', 'transition-transform duration-300', 'group-hover:rotate-180' ]}
       />
     </a>
   </section>

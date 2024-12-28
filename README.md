@@ -7,9 +7,6 @@ Site Original - https://caawards.com.ar/
 ## WEB
 ![ebe228bee928b2225293b81f53bcb9df](https://github.com/user-attachments/assets/71e50900-a09d-4826-b527-1fda962d9c64)
 
-## Responsive
-![image](https://github.com/user-attachments/assets/4048fde7-d4c9-4486-bf78-7061adc1cef2)
-
 ## Figma | Created by BanKing
 ![image](https://github.com/user-attachments/assets/aab8ad69-f149-4a95-98cf-ddfdf7870459)
 ![image](https://github.com/user-attachments/assets/d86df765-7570-4e75-adf6-7566aabb6f87)

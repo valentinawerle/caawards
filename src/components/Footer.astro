@@ -7,16 +7,16 @@ import { getTranslateLabels } from "../i18n/utils";
 const translateLabels = getTranslateLabels(Astro.currentLocale || "es");
 
 const icons = [
-    { Image: GithubIcon, href: "https://github.com/valentinawerle/caawards", alt:"github-icon" },
-    { Image: InstagramIcon, href: "https://www.instagram.com/caawards", alt:"instagram-icon" },
-    { Image: TwitterIcon, href: "https://x.com/CoscuArmyOf", alt:"twitter-icon" },
+    { Image: GithubIcon, href: "https://github.com/valentinawerle/caawards", alt:"github-icon", labelInfo:"Go to GitHub repository" },
+    { Image: InstagramIcon, href: "https://www.instagram.com/caawards", alt:"instagram-icon", labelInfo:"Go to Instagram CA Awards" },
+    { Image: TwitterIcon, href: "https://x.com/CoscuArmyOf", alt:"twitter-icon", labelInfo:"Go to Twitter CA Awards" },
 ];
 ---
 
 <footer class="flex flex-col items-center mb-16 md:mb-12 md:pt-5 gap-2">
    <div class="flex gap-2">
-      {icons.map(({ Image, href, alt }) => (
-         <a href={href} target="_blank" rel="noopener noreferrer" class="hover-scale">
+      {icons.map(({ Image, href, alt, labelInfo }) => (
+         <a href={href} target="_blank" rel="noopener noreferrer" class="hover-scale" aria-label={labelInfo}>
             <Image class="w-5" alt={alt} />
          </a>
       ))}
